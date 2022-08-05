@@ -1,0 +1,30 @@
+<template>
+    <div class="container">
+        <h2>Actualizar o Crear Cliente</h2>
+        <lightning-layout multiple-rows>
+            <lightning-layout-item padding="around-small" size="12">
+                <lightning-input type="text" label="Nombre" onchange={handleContactChange} name="firstName"></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="12">
+                <lightning-input type="text" label="Apellido" onchange={handleContactChange} name="lastName"></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="6">
+                <lightning-input type="text" label="Tipo de Identificacion" onchange={handleContactChange} name="tipoDeIdentificacion"></lightning-input>
+                <lightning-input type="text" label="Numero de Identificacion" onchange={handleContactChange} name="numeroDeIdentificacion"></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="6">
+                <lightning-input type="text" label="Numero de Pasaporte" onchange={handleContactChange} name="numeroDePasaporte"></lightning-input>
+                <lightning-input type="text" label="Nacionalidad" onchange={handleContactChange} name="nacionalidad"></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="6">
+                <lightning-input type="date" label="Fecha de Nacimiento" onchange={handleContactChange} name="fechaDeNacimiento"></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="6">
+                <lightning-input type="email" label="Correo Electronico" onchange={handleContactChange} name="correoElectronico"></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="12">
+                <lightning-button variant="brand" label="Crear" onclick={createContact}>Crear</lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>    
+</template>

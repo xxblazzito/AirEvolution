@@ -1,0 +1,74 @@
+<template>
+    <div class="c-container">
+        <lightning-layout horizontal-align="space" multiple-rows>
+            <!-- Primera linea Titulo -->
+            <lightning-layout-item padding="around-small" size="10">
+                <p align="center" class="titulos">Calculadora</p>
+             </lightning-layout-item>
+             <!-- Operacion -->
+            <lightning-layout-item padding="around-small" size="12">
+               <lightning-input type="text" label="Operacion" value={cadena} read-only="true" class="c-imput-text"></lightning-input>
+            </lightning-layout-item>
+            <!-- Resultado -->
+            <lightning-layout-item padding="around-small" size="12">
+                <lightning-input type="text" label="Resultado" read-only="false" value={resultado} class="c-imput-text"></lightning-input>
+            </lightning-layout-item>
+            <!-- Botones 123+ -->
+            <lightning-layout-item size="3" padding="around-small">
+                <lightning-button label="1" data-id="1" onclick={numberChange}></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item size="3" padding="around-small">
+                <lightning-button label="2" data-id="2" onclick={numberChange}></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item size="3" padding="around-small">
+                <lightning-button label="3" data-id="3" onclick={numberChange}></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item size="3" padding="around-small">
+                <lightning-button variant="brand" label="+" data-id="+" onclick={operationClick}></lightning-button>
+            </lightning-layout-item>
+            <!-- Botones 456- -->
+            <lightning-layout-item size="3" padding="around-small">
+                <lightning-button label="4" data-id="4" onclick={numberChange}></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item size="3" padding="around-small">
+                <lightning-button label="5" data-id="5" onclick={numberChange}></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item size="3" padding="around-small">
+                <lightning-button label="6" data-id="6" onclick={numberChange}></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item size="3" padding="around-small">
+                <lightning-button variant="brand" label="-" data-id="-" onclick={operationClick}></lightning-button>
+            </lightning-layout-item>
+            <!-- Botones 789* -->
+            <lightning-layout-item size="3" padding="around-small">
+                <lightning-button label="7" data-id="7" onclick={numberChange}></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item size="3" padding="around-small">
+                <lightning-button label="8" data-id="8" onclick={numberChange}></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item size="3" padding="around-small">
+                <lightning-button label="9" data-id="9" onclick={numberChange}></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item size="3" padding="around-small">
+                <lightning-button variant="brand" label="*" data-id="*" onclick={operationClick}></lightning-button>
+            </lightning-layout-item>
+            <!-- Botones clr-0-=/ -->
+            <lightning-layout-item size="3" padding="around-small">
+                <lightning-button variant="destructive-text" label="clr" onclick={clear}></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item size="3" padding="around-small">
+                <lightning-button label="0" data-id="0" onclick={numberChange}></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item size="3" padding="around-small">
+                <lightning-button variant="success" label="=" onclick={operate}></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item size="3" padding="around-small">
+                <lightning-button variant="brand" label="/" data-id="/" onclick={operationClick}></lightning-button>
+            </lightning-layout-item>
+            <!-- boton de igual 2-->
+            
+            
+            
+        </lightning-layout>
+    </div>
+</template>

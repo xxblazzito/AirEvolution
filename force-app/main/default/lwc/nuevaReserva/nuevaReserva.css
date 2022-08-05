@@ -1,0 +1,14 @@
+.busqueda{
+    background-color: rgb(244, 245, 247);
+    border-radius: 10px;
+}
+.itemss{
+    padding: 2% 4% 2% 4%;
+}
+h2{
+    align-content: center;
+}
+.slds-modal__container {
+    max-width: 90rem !important;
+    width: 90% !important;
+}

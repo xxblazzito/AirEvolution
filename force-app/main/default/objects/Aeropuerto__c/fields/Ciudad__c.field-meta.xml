@@ -1,0 +1,1426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ciudad__c</fullName>
+    <description>Ciudad perteneciente a un pais y seleccionable para un vuelo</description>
+    <externalId>false</externalId>
+    <label>Ciudad</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Pais__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetName>Ciudad</valueSetName>
+        <valueSettings>
+            <controllingFieldValue>Reino Unido</controllingFieldValue>
+            <valueName>Edimburgo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Reino Unido</controllingFieldValue>
+            <valueName>Escocia</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Reino Unido</controllingFieldValue>
+            <valueName>Gibraltar</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Reino Unido</controllingFieldValue>
+            <valueName>Inglaterra</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Reino Unido</controllingFieldValue>
+            <valueName>Inverness</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Reino Unido</controllingFieldValue>
+            <valueName>Islas Malvinas</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Reino Unido</controllingFieldValue>
+            <valueName>Isla Soledad</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Reino Unido</controllingFieldValue>
+            <valueName>Jersey</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Reino Unido</controllingFieldValue>
+            <valueName>Londres</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Reino Unido</controllingFieldValue>
+            <valueName>Puerto Argentino/Stanley</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Reino Unido</controllingFieldValue>
+            <valueName>Saint Helier</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>República Dominicana</controllingFieldValue>
+            <valueName>Santo Domingo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Singapur</controllingFieldValue>
+            <valueName>Consejo del Sudeste nota 9​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Singapur</controllingFieldValue>
+            <valueName>Singapur</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Taiwán</controllingFieldValue>
+            <valueName>Taipéi</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Taiwán</controllingFieldValue>
+            <valueName>Taoyuan</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Túnez</controllingFieldValue>
+            <valueName>Medenine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Túnez</controllingFieldValue>
+            <valueName>Yerba</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Turquía</controllingFieldValue>
+            <valueName>Estambul</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Turquía</controllingFieldValue>
+            <valueName>Provincia de Estambul</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Emiratos Árabes Unidos</controllingFieldValue>
+            <valueName>Dubái</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Kazajistán</controllingFieldValue>
+            <valueName>Astaná</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Kazajistán</controllingFieldValue>
+            <valueName>Provincia de Akmola</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>México</controllingFieldValue>
+            <valueName>Chihuahua</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>México</controllingFieldValue>
+            <valueName>Ciudad de México</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>México</controllingFieldValue>
+            <valueName>Guadalajara , Jalisco</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>México</controllingFieldValue>
+            <valueName>Hermosillo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>México</controllingFieldValue>
+            <valueName>Jalisco</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>México</controllingFieldValue>
+            <valueName>México</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>México</controllingFieldValue>
+            <valueName>Monterrey</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>México</controllingFieldValue>
+            <valueName>Nuevo León</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>México</controllingFieldValue>
+            <valueName>Sonora</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Montenegro</controllingFieldValue>
+            <valueName>Montenegro</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bolivia</controllingFieldValue>
+            <valueName>Santa Cruz de la Sierra</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Países Bajos</controllingFieldValue>
+            <valueName>Ámsterdam</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Países Bajos</controllingFieldValue>
+            <valueName>Aruba</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Países Bajos</controllingFieldValue>
+            <valueName>Brabante Septentrional</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Países Bajos</controllingFieldValue>
+            <valueName>Eindhoven</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Países Bajos</controllingFieldValue>
+            <valueName>Holanda Septentrional</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Países Bajos</controllingFieldValue>
+            <valueName>Oranjestad</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brasil</controllingFieldValue>
+            <valueName>Bahia</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brasil</controllingFieldValue>
+            <valueName>BRA</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brasil</controllingFieldValue>
+            <valueName>Curitiba</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brasil</controllingFieldValue>
+            <valueName>Fortaleza</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brasil</controllingFieldValue>
+            <valueName>São Paulo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Panamá</controllingFieldValue>
+            <valueName>Ciudad de Panamá</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Panamá</controllingFieldValue>
+            <valueName>Provincia de Panamá</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Canadá</controllingFieldValue>
+            <valueName>Columbia Británica</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Canadá</controllingFieldValue>
+            <valueName>Halifax</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Canadá</controllingFieldValue>
+            <valueName>Iqaluit</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Canadá</controllingFieldValue>
+            <valueName>Manitoba</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Canadá</controllingFieldValue>
+            <valueName>Mont-Joli</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Canadá</controllingFieldValue>
+            <valueName>Montreal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Canadá</controllingFieldValue>
+            <valueName>Nueva Escocia</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Canadá</controllingFieldValue>
+            <valueName>Nunavut</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Canadá</controllingFieldValue>
+            <valueName>Ontario</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Canadá</controllingFieldValue>
+            <valueName>Ottawa</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Canadá</controllingFieldValue>
+            <valueName>Qikiqtarjuaq</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Canadá</controllingFieldValue>
+            <valueName>Quebec</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Canadá</controllingFieldValue>
+            <valueName>Resolute</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Canadá</controllingFieldValue>
+            <valueName>Toronto</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Canadá</controllingFieldValue>
+            <valueName>Vancouver</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Canadá</controllingFieldValue>
+            <valueName>Winnipeg</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Paraguay</controllingFieldValue>
+            <valueName>Alto Paraná</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Paraguay</controllingFieldValue>
+            <valueName>Amambay</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Paraguay</controllingFieldValue>
+            <valueName>Asunción</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Paraguay</controllingFieldValue>
+            <valueName>Central</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Paraguay</controllingFieldValue>
+            <valueName>Ciudad del Este</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Paraguay</controllingFieldValue>
+            <valueName>Encarnacion</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Paraguay</controllingFieldValue>
+            <valueName>Itapúa</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Paraguay</controllingFieldValue>
+            <valueName>Pedro Juan Caballero</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Catar</controllingFieldValue>
+            <valueName>Doha</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Catar</controllingFieldValue>
+            <valueName>Municipio de Doha</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Perú</controllingFieldValue>
+            <valueName>Callao</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Perú</controllingFieldValue>
+            <valueName>Lima</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chile</controllingFieldValue>
+            <valueName>Antofagasta</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chile</controllingFieldValue>
+            <valueName>Arica</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chile</controllingFieldValue>
+            <valueName>Arica y Parinacota</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chile</controllingFieldValue>
+            <valueName>Atacama</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chile</controllingFieldValue>
+            <valueName>Aysén</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chile</controllingFieldValue>
+            <valueName>Biobío</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chile</controllingFieldValue>
+            <valueName>Concepción</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chile</controllingFieldValue>
+            <valueName>El Salvador</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chile</controllingFieldValue>
+            <valueName>Iquique</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chile</controllingFieldValue>
+            <valueName>Isla de Pascua</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chile</controllingFieldValue>
+            <valueName>Magallanes</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chile</controllingFieldValue>
+            <valueName>Metropolitana de Santiago</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chile</controllingFieldValue>
+            <valueName>O&apos;Higgins</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chile</controllingFieldValue>
+            <valueName>Punta Arenas</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chile</controllingFieldValue>
+            <valueName>Rancagua</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chile</controllingFieldValue>
+            <valueName>Santiago de Chile</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chile</controllingFieldValue>
+            <valueName>Tarapacá</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chile</controllingFieldValue>
+            <valueName>Valparaíso</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>China</controllingFieldValue>
+            <valueName>Ciudad de Macao</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>China</controllingFieldValue>
+            <valueName>Hong Kong</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>China</controllingFieldValue>
+            <valueName>Macao</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>China</controllingFieldValue>
+            <valueName>Región Administrativa Especial de Hong Kong</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rumania</controllingFieldValue>
+            <valueName>Distrito de Sibiu</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rumania</controllingFieldValue>
+            <valueName>Sibiu</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chipre</controllingFieldValue>
+            <valueName>Distrito de Nicosia</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chipre</controllingFieldValue>
+            <valueName>Nicosia</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Colombia</controllingFieldValue>
+            <valueName>Antioquia</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Colombia</controllingFieldValue>
+            <valueName>Bogotá</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Colombia</controllingFieldValue>
+            <valueName>Cali</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Colombia</controllingFieldValue>
+            <valueName>Rionegro , Medellín</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Colombia</controllingFieldValue>
+            <valueName>Valle del cauca</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Corea del Sur</controllingFieldValue>
+            <valueName>Ciudad Metropolitana de Incheon</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Corea del Sur</controllingFieldValue>
+            <valueName>Incheon , Seúl</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Costa Rica</controllingFieldValue>
+            <valueName>GAM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Costa Rica</controllingFieldValue>
+            <valueName>Guanacaste</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Costa Rica</controllingFieldValue>
+            <valueName>San José</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Afganistán</controllingFieldValue>
+            <controllingFieldValue>Alemania</controllingFieldValue>
+            <valueName>Berlín</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Afganistán</controllingFieldValue>
+            <valueName>Colonia , Bonn</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Afganistán</controllingFieldValue>
+            <valueName>Fayzabad</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Afganistán</controllingFieldValue>
+            <valueName>Fráncfort</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Afganistán</controllingFieldValue>
+            <valueName>Fráncfort del Meno</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Afganistán</controllingFieldValue>
+            <controllingFieldValue>Alemania</controllingFieldValue>
+            <valueName>Hamburgo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Afganistán</controllingFieldValue>
+            <valueName>Hannover</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Afganistán</controllingFieldValue>
+            <valueName>Heligoland</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Afganistán</controllingFieldValue>
+            <valueName>Herat</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Afganistán</controllingFieldValue>
+            <valueName>Jalalabad</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Afganistán</controllingFieldValue>
+            <valueName>Kabul</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Afganistán</controllingFieldValue>
+            <valueName>Kandahar</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Afganistán</controllingFieldValue>
+            <valueName>Mazar-e Sarif</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Afganistán</controllingFieldValue>
+            <valueName>Munich</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Afganistán</controllingFieldValue>
+            <valueName>Provincia de Badajshan</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Afganistán</controllingFieldValue>
+            <valueName>Provincia de Balj</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Afganistán</controllingFieldValue>
+            <valueName>Provincia de Bamiyán</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Afganistán</controllingFieldValue>
+            <valueName>Provincia de Helmand</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Afganistán</controllingFieldValue>
+            <valueName>Provincia de Herat</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Afganistán</controllingFieldValue>
+            <valueName>Provincia de Kabul</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Afganistán</controllingFieldValue>
+            <valueName>Provincia de Kandahar</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Afganistán</controllingFieldValue>
+            <valueName>Provincia de Nangar</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Afganistán</controllingFieldValue>
+            <valueName>Provincia de Parwan</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Alemania</controllingFieldValue>
+            <valueName>Baja Sajonia</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Alemania</controllingFieldValue>
+            <valueName>Baviera</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Alemania</controllingFieldValue>
+            <valueName>Hesse</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Alemania</controllingFieldValue>
+            <valueName>Renania del Norte-Westfalia</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Alemania</controllingFieldValue>
+            <valueName>Renania del Norte-Westfalia 2</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Alemania</controllingFieldValue>
+            <valueName>Schleswig-Holstein</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Angola</controllingFieldValue>
+            <valueName>Luanda</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Angola</controllingFieldValue>
+            <valueName>Provincia de Luanda</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Arabia Saudita</controllingFieldValue>
+            <valueName>Provincia de Riad</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Arabia Saudita</controllingFieldValue>
+            <valueName>Riad</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Buenos aires</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Catamarca</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Chaco</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Ciudad de Corrientes</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Ciudad de Formosa</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Ciudad de La Rioja</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Ciudad de Mendoza</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Ciudad de Resistencia</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Ciudad de Salta</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Ciudad de San Luis</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Ciudad de Santa Rosa</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Ciudad de Santiago del Estero</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Clorinda</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Concordia</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Córdoba</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Corrientes</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Curuzú Cuatiá</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Entre Rios</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Ezeiza</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Formosa</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>General Pico</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Goya</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Gualeguaychú</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>La pampa</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Malargüe</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Mar del Plata</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Mendoza</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Mercedes</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Merlo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Monte Caseros</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Paraná</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Paso de los Libres</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Presidencia Roque Sáenz Peña</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Río Grande</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Rosario</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Salta</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>San Fernando del Valle de Catamarca</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>San Luis</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>San Rafael</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>San Ramón de la Nueva Orán</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Santa Fe</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Santiago del Estereo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Tartagal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Termas de Río Hondo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Tierra del fuego</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Ushuaia</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Argentina</controllingFieldValue>
+            <valueName>Villa Mercedes</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Australia</controllingFieldValue>
+            <valueName>Isla Norfolk</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Australia</controllingFieldValue>
+            <valueName>Kingston</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Australia</controllingFieldValue>
+            <valueName>Nueva Gales del Sur</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Australia</controllingFieldValue>
+            <valueName>Sídney</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Austria</controllingFieldValue>
+            <valueName>Viena</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bangladés</controllingFieldValue>
+            <valueName>Jessore</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bangladés</controllingFieldValue>
+            <valueName>Khulna</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bélgica</controllingFieldValue>
+            <valueName>Lieja</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bélgica</controllingFieldValue>
+            <valueName>Región Valona</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rusia</controllingFieldValue>
+            <valueName>Kaliningrado</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rusia</controllingFieldValue>
+            <valueName>Moscú</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rusia</controllingFieldValue>
+            <valueName>Óblast de Kaliningrado</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rusia</controllingFieldValue>
+            <valueName>Óblast de Moscú</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Suecia</controllingFieldValue>
+            <valueName>Estocolmo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Uruguay</controllingFieldValue>
+            <valueName>Maldonado</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Uruguay</controllingFieldValue>
+            <valueName>Maldonado y Punta del Este</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Uruguay</controllingFieldValue>
+            <valueName>Montevideo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Venezuela</controllingFieldValue>
+            <valueName>Caracas</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Venezuela</controllingFieldValue>
+            <valueName>Dependencias Federales</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Croacia</controllingFieldValue>
+            <valueName>Condado de Zagreb</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Croacia</controllingFieldValue>
+            <valueName>Zagreb</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Cuba</controllingFieldValue>
+            <valueName>Cayo Coco</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Cuba</controllingFieldValue>
+            <valueName>Ciego de Ávila</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Cuba</controllingFieldValue>
+            <valueName>Holguín</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Cuba</controllingFieldValue>
+            <valueName>La Habana</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Cuba</controllingFieldValue>
+            <valueName>Santiago de Cuba</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Cuba</controllingFieldValue>
+            <valueName>Villa Clara</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Ecuador</controllingFieldValue>
+            <valueName>Azuay</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Ecuador</controllingFieldValue>
+            <valueName>Cuenca</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Ecuador</controllingFieldValue>
+            <valueName>Guayaquil</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Ecuador</controllingFieldValue>
+            <valueName>Guayas</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Ecuador</controllingFieldValue>
+            <valueName>Manabí</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Ecuador</controllingFieldValue>
+            <valueName>Manta</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Ecuador</controllingFieldValue>
+            <valueName>Pichincha</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Ecuador</controllingFieldValue>
+            <valueName>Tababela</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>El salvador</controllingFieldValue>
+            <valueName>San Salvador</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Albacete</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Andalucía</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Aragón</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Canarias</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Castellon</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Castilla-La Mancha</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Castilla y León</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Cataluña</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Comunidad de Madrid</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Comunidad Valenciana</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Granada</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Ibiza</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Islas Baleares</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Jerez</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>La Seu d&apos;Urgell , Andorra la Vella</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Madrid</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Málaga</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Melilla</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Navarra</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Noáin</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Región de Murcia</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Reus , Tarragona</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Sabadell</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Sevilla</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Tenerife</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Valladolid</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Vigo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>España</controllingFieldValue>
+            <valueName>Zaragoza</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Estados Unidos</controllingFieldValue>
+            <valueName>California</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Estados Unidos</controllingFieldValue>
+            <valueName>Chicago</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Estados Unidos</controllingFieldValue>
+            <valueName>Dayton</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Estados Unidos</controllingFieldValue>
+            <valueName>Eagle-Vail</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Estados Unidos</controllingFieldValue>
+            <valueName>Filadelfia</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Estados Unidos</controllingFieldValue>
+            <valueName>Florida</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Estados Unidos</controllingFieldValue>
+            <valueName>Hawái</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Estados Unidos</controllingFieldValue>
+            <valueName>Honolulu</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Estados Unidos</controllingFieldValue>
+            <valueName>Houston</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Estados Unidos</controllingFieldValue>
+            <valueName>Kansas City</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Estados Unidos</controllingFieldValue>
+            <valueName>Las Vegas</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Estados Unidos</controllingFieldValue>
+            <valueName>Los Ángeles</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Estados Unidos</controllingFieldValue>
+            <valueName>Miami</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Estados Unidos</controllingFieldValue>
+            <valueName>Misuri</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Estados Unidos</controllingFieldValue>
+            <valueName>Nevada</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Estados Unidos</controllingFieldValue>
+            <valueName>Nueva York</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Estados Unidos</controllingFieldValue>
+            <valueName>Orlando</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Estados Unidos</controllingFieldValue>
+            <valueName>Pensilvania</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Estados Unidos</controllingFieldValue>
+            <valueName>Sacramento</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Estados Unidos</controllingFieldValue>
+            <valueName>Texas</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Finlandia</controllingFieldValue>
+            <valueName>Finlandia del Sudoeste</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Finlandia</controllingFieldValue>
+            <valueName>Helsinki</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Finlandia</controllingFieldValue>
+            <valueName>Ivalo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Finlandia</controllingFieldValue>
+            <valueName>Laponia Finlandesa</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Finlandia</controllingFieldValue>
+            <valueName>Turku</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Finlandia</controllingFieldValue>
+            <valueName>Uusimaa</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Francia</controllingFieldValue>
+            <valueName>Alsacia</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Francia</controllingFieldValue>
+            <valueName>Aquitania</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Francia</controllingFieldValue>
+            <valueName>Basilea , Mulhouse , Friburgo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Francia</controllingFieldValue>
+            <valueName>Estrasburgo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Francia</controllingFieldValue>
+            <valueName>Isla de Francia</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Francia</controllingFieldValue>
+            <valueName>Occitania</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Francia</controllingFieldValue>
+            <valueName>París</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Francia</controllingFieldValue>
+            <valueName>Toulouse</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Grecia</controllingFieldValue>
+            <valueName>Atenas</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Grecia</controllingFieldValue>
+            <valueName>Ática</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Grecia</controllingFieldValue>
+            <valueName>Egeo Meridional</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Grecia</controllingFieldValue>
+            <valueName>Macedonia Central</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Grecia</controllingFieldValue>
+            <valueName>Pothia</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Grecia</controllingFieldValue>
+            <valueName>Tesalónica</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Guatemala</controllingFieldValue>
+            <valueName>Ciudad de Guatemala</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Guatemala</controllingFieldValue>
+            <valueName>Guatemala</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Guatemala</controllingFieldValue>
+            <valueName>Izabal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Guatemala</controllingFieldValue>
+            <valueName>Petén</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Guatemala</controllingFieldValue>
+            <valueName>Puerto Barrios</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Guatemala</controllingFieldValue>
+            <valueName>Santa Elena de la Cruz</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Honduras</controllingFieldValue>
+            <valueName>Cortés</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Honduras</controllingFieldValue>
+            <valueName>Francisco Morazán</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Honduras</controllingFieldValue>
+            <valueName>San Pedro Sula</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Honduras</controllingFieldValue>
+            <valueName>Tegucigalpa</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hungría</controllingFieldValue>
+            <valueName>Budapest</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hungría</controllingFieldValue>
+            <valueName>Győr-Moson-Sopron</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>India</controllingFieldValue>
+            <valueName>Hubballi , Dharwad</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>India</controllingFieldValue>
+            <valueName>Karnataka</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Irlanda</controllingFieldValue>
+            <valueName>Cork</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Irlanda</controllingFieldValue>
+            <valueName>Munster</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Islandia</controllingFieldValue>
+            <valueName>Höfuðborgarsvæðið</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Islandia</controllingFieldValue>
+            <valueName>Reikiavik</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Islas Salomón</controllingFieldValue>
+            <valueName>Honiara</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Israel</controllingFieldValue>
+            <valueName>Distrito Central</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Israel</controllingFieldValue>
+            <valueName>Tel Aviv</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Italia</controllingFieldValue>
+            <valueName>Campania</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Italia</controllingFieldValue>
+            <valueName>Florencia</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Italia</controllingFieldValue>
+            <valueName>Friul-Venecia Julia</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Italia</controllingFieldValue>
+            <valueName>Lacio</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Italia</controllingFieldValue>
+            <valueName>Milán</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Italia</controllingFieldValue>
+            <valueName>Nápoles</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Italia</controllingFieldValue>
+            <valueName>Roma</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Italia</controllingFieldValue>
+            <valueName>Toscana</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Italia</controllingFieldValue>
+            <valueName>Trieste</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Japón</controllingFieldValue>
+            <valueName>Tokio</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Marruecos</controllingFieldValue>
+            <valueName>Casablanca</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Marruecos</controllingFieldValue>
+            <valueName>Marrakech</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Marruecos</controllingFieldValue>
+            <valueName>Marrakech-Safí</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Marruecos</controllingFieldValue>
+            <valueName>Región de Casablanca-Settat</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mauricio</controllingFieldValue>
+            <valueName>Rodrigues</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Nicaragua</controllingFieldValue>
+            <valueName>Managua</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Nueva Zelanda</controllingFieldValue>
+            <valueName>wellington</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Portugal</controllingFieldValue>
+            <valueName>Alentejo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Portugal</controllingFieldValue>
+            <valueName>Algarve</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Portugal</controllingFieldValue>
+            <valueName>Faro</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Portugal</controllingFieldValue>
+            <valueName>Funchal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Portugal</controllingFieldValue>
+            <valueName>Isla de Corvo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Portugal</controllingFieldValue>
+            <valueName>Isla de Faial</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Portugal</controllingFieldValue>
+            <valueName>Isla de Flores</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Portugal</controllingFieldValue>
+            <valueName>Isla del Pico</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Portugal</controllingFieldValue>
+            <valueName>Isla de Porto Santo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Portugal</controllingFieldValue>
+            <valueName>Isla de Santa Maria</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Portugal</controllingFieldValue>
+            <valueName>Isla de São Jorge</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Portugal</controllingFieldValue>
+            <valueName>Isla de São Miguel</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Portugal</controllingFieldValue>
+            <valueName>Isla Graciosa</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Portugal</controllingFieldValue>
+            <valueName>Islas Azores</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Portugal</controllingFieldValue>
+            <valueName>Isla Terceira</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Portugal</controllingFieldValue>
+            <valueName>Lisboa</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Portugal</controllingFieldValue>
+            <valueName>Madeira</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Portugal</controllingFieldValue>
+            <valueName>Oporto</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Portugal</controllingFieldValue>
+            <valueName>Región Norte</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

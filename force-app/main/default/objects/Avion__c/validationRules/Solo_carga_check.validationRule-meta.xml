@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Solo_carga_check</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF( Solo_Carga__c ,  OR(  NOT( ISBLANK( Numero_de_pasajeros_clase_negocios__c ) )  , NOT( ISBLANK( Numero_de_pasajeros_clase_turista__c ) ) ) , False)</errorConditionFormula>
+    <errorMessage>El avion es de solo carga asi que no debe de contener pasajeros</errorMessage>
+</ValidationRule>
