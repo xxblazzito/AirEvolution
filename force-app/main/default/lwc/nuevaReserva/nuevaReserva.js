@@ -1,4 +1,4 @@
-import { LightningElement, wire, track } from 'lwc';
+import { LightningElement, wire, track, api } from 'lwc';
 import comprobarContacto from '@salesforce/apex/contactoReserva.clienteReserva'; 
 import crearteReserva from '@salesforce/apex/contactoReserva.crearReserva';
 

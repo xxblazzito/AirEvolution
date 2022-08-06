@@ -40,16 +40,21 @@ public with sharing class contactoReserva {
     }
 
     @AuraEnabled(cacheable = true)
-    public static List<vuelo> obtenerVuelos(){
+    public static List<vuelo> obtenerVuelos(string idListaPrecios){
         try{
-            List<Product2> listado = [SELECT Id, Name,Aeropuerto_de_partida__r.Name,Aeropuerto_de_partida__r.Pais__c, 
-                                    Aeropuerto_de_llegada__r.Name,Aeropuerto_de_llegada__r.Pais__c,Fecha_y_hora_de_partida__c,Fecha_y_hora_estimada_de_llegada__c  
-                                    FROM Product2 WHERE Estado__c = 'En Venta' AND IsActive = true];
+            List<Product2> listado = [SELECT Id, Name,Aeropuerto_de_partida__r.Name,Aeropuerto_de_partida__r.Pais__c,  
+                                    Aeropuerto_de_llegada__r.Name,Aeropuerto_de_llegada__r.Pais__c,Fecha_y_hora_de_partida__c,Fecha_y_hora_estimada_de_llegada__c,  
+                                    (select unitprice from pricebookEntries WHERE Pricebook2Id =: idListaPrecios )FROM Product2 WHERE Estado__c = 'En Venta' AND IsActive = true ];
 
             List<Vuelo> vuelosRta = new List<Vuelo>();
 
             for(Product2 a: listado){
-                vuelosRta.add(new vuelo((string)a.Id, a.Name, a.Aeropuerto_de_partida__r.Name,a.Aeropuerto_de_partida__r.Pais__c, a.Aeropuerto_de_llegada__r.Name,a.Aeropuerto_de_llegada__r.Pais__c, a.Fecha_y_hora_de_partida__c, a.Fecha_y_hora_estimada_de_llegada__c));
+                if(a.pricebookEntries.size() > 0){
+                    vuelosRta.add(new vuelo((string)a.Id, a.Name, a.Aeropuerto_de_partida__r.Name,a.Aeropuerto_de_partida__r.Pais__c,
+                                a.Aeropuerto_de_llegada__r.Name,a.Aeropuerto_de_llegada__r.Pais__c, a.Fecha_y_hora_de_partida__c, a.Fecha_y_hora_estimada_de_llegada__c,
+                                a.pricebookEntries[0].unitprice));
+                }
+                
             }
 
             return vuelosRta;
@@ -88,9 +93,11 @@ public with sharing class contactoReserva {
         @AuraEnabled 
         public DateTime fechaPartida {get;set;}
         @AuraEnabled 
-        public DateTime fechaLlegada {get;set;}  
+        public DateTime fechaLlegada {get;set;}
+        @AuraEnabled 
+        public decimal precioUnitario {get;set;}  
 
-        public Vuelo(string id, string codigoVuelo, string aeropuertoDePartida, string aeroPartidaPais, string aeropuertoDeLlegada, string aeroLlegadaPais, DateTime fechaDePartida, DateTime fechaDeLlegada) {
+        public Vuelo(string id, string codigoVuelo, string aeropuertoDePartida, string aeroPartidaPais, string aeropuertoDeLlegada, string aeroLlegadaPais, DateTime fechaDePartida, DateTime fechaDeLlegada, decimal precio) {
             idVuelo= id;
             codigo= codigoVuelo;
             aeropuertoPartida= aeropuertoDePartida; 
@@ -99,6 +106,7 @@ public with sharing class contactoReserva {
             aeropuertoLlegadaPais = aeroLlegadaPais;
             fechaPartida= fechaDePartida;
             fechaLlegada= fechaDeLlegada;
+            precioUnitario = precio;
         }
     }
 

@@ -7,6 +7,7 @@ const columns = [
     { label: 'Pais de Partida', fieldName: 'aeropuertoPartidaPais',wrapText: true, sortable: "true"},
     { label: 'Aeropuerto de Llegada', fieldName: 'aeropuertoLlegada',wrapText: true, sortable: "true"},
     { label: 'Pais de Llegada', fieldName: 'aeropuertoLlegadaPais',wrapText: true, sortable: "true"},
+    { label: 'Precio de Venta', fieldName: 'precioUnitario', wrapText: true, sortable: "true"},
     { label: 'Fecha y Hora de Partida', fieldName: 'fechaPartida',wrapText: true, type: "date",
     typeAttributes:{
         year: "numeric",
@@ -31,12 +32,18 @@ export default class ListarVuelos extends LightningElement {
     @track sortBy;
     @track sortDirection;
     @track isModalOpen = false;
+    @api idPrecio;
 
-    @wire(listaVuelos)vuelos(result){
+    @wire(listaVuelos,{idListaPrecios: '$idPrecio'})vuelos(result){
+        console.log(this.idPrecio);
+        console.log(result);
         if (result.data) {
+            console.log('si trajo algo');
             this.data = result.data;
             this.error = undefined;
         } else if (result.error) {
+            console.log('no trajo nada');
+            console.log(result.error);
             this.error = result.error;
             this.data = undefined;
         }
@@ -47,6 +54,7 @@ export default class ListarVuelos extends LightningElement {
         var selectedRecords =  this.template.querySelector("lightning-datatable").getSelectedRows();
         if(selectedRecords.length > 0){
             console.log('selectedRecords are ', selectedRecords);
+            console.log('id precio'+ this.idPrecio );
    
             let ids = '';
             selectedRecords.forEach(currentItem => {
