@@ -62,30 +62,19 @@ public with sharing class TiqueteTriggerHandler implements triggerHandler {
 
     public static void asignarEquipaje(List<OpportunityLineItem> tiqueteNew)
     {
-        system.debug(tiqueteNew[0].opportunity.Pricebook2Id);
-        //Select Pricebook2Id from Opportunity where  
-        set<Id> idVuelo = new set<Id>();
+        Pricebook2 listaPrecio = [Select Id from Pricebook2 where name = 'Negocio' limit 1];
+        set<Id> idReserva = new set<Id>();
         for (OpportunityLineItem tiquete: tiqueteNew) {
-            idVuelo.add(tiquete.Product2Id);
+            idReserva.add(tiquete.OpportunityId);
         }
-        string idPrecioNegocios = [Select id From Pricebook2 where name = 'Negocio' limit 1].id;
-        set<Id> OpIdNegocios = new set<Id>();
-        List<PricebookEntry> entradaListaPrecio = [Select Id,Product2Id from pricebookEntry where Pricebook2Id =: idPrecioNegocios AND Product2Id IN : idvuelo ];
-        
-        for(PricebookEntry ListEntrada : entradaListaPrecio){
-            for(opportunityLineItem tiquete : tiqueteNew){
-                
-                if (tiquete.Product2Id == ListEntrada.Product2Id){
-                    tiquete.Equipaje_Permitido__c = 'Personal;Maleta de Cabina;Maleta de Bodega';
+        List<Opportunity> reservas = [Select Id From Opportunity Where Id IN : idReserva And Pricebook2Id =: listaPrecio.Id ];
+        for(OpportunityLineItem t: tiqueteNew){
+            for(Opportunity r: reservas){
+                if(t.OpportunityId == r.Id){
+                    t.Equipaje_Permitido__c = 'Personal;Maleta de Cabina;Maleta de Bodega';
                 }
-                    
             }
         }
-        
-        
-        //map<Id, Product2> tiquetes = new map<Id, Product2>([Select Id from Product2 where Id =: idTiquetes]);
-
-        
     }
 
     public static void PasajeroDeReserva (List<OpportunityLineItem> tiqueteNew){
@@ -93,9 +82,10 @@ public with sharing class TiqueteTriggerHandler implements triggerHandler {
         for(opportunity reserva : reservas){
             for(opportunityLineItem tiquete : tiqueteNew){
                 if (tiquete.OpportunityId == reserva.Id){
-                    tiquete.Pasajero__c = reserva.Titular_de_la_reserva__c;
-                }
-                    
+                    if(tiquete.Pasajero__c == null){
+                        tiquete.Pasajero__c = reserva.Titular_de_la_reserva__c;
+                    }
+                }       
             }
         }
     }

@@ -29,7 +29,7 @@ public with sharing class AccountTriggerHandler implements triggerHandler {
     public void afterUndelete(List<Account> newAccounts,Map<ID,SObject> newAccountMap){
         // code here
         }
-
+//por cada cuenta creada se crea un caso y se asigna al dueño de la cuenta
     public static void DupeReminder(List<Account> cuenta){
         List<Case> casos = new List<Case>();
         for (Account acc: cuenta){

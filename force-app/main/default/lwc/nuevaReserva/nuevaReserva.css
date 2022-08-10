@@ -12,3 +12,7 @@ h2{
     max-width: 90rem !important;
     width: 90% !important;
 }
+.contieneTabla{
+    border-style: solid;
+    border-color: rgb(106, 143, 230);
+}

@@ -7,22 +7,16 @@ public class Animal {
     especie Tipo;
     String Nombre;
     
-    
-    
-    
-    public Animal(Integer numPatas,String nombre, String color, Boolean esDomestico, especie Tipo)
-    {
+    public Animal(Integer numPatas,String nombre, String color, Boolean esDomestico, especie Tipo){
         this.numPatas=numPatas;
         this.color=color;
         this.esDomestico=esDomestico;
         this.nacer();
         this.nombre=nombre;
-        this.tipo=tipo;
-         
+        this.tipo=tipo;  
     }
     
-    public string hablar()
-    {
+    public string hablar(){
         switch on Tipo
         {
             when Perro
@@ -46,21 +40,19 @@ public class Animal {
         
     }
     
-    public boolean comer()
-    {
+    public boolean comer(){
         Return False;
     }
-    public boolean comer(String comida) 
-    {
+    
+    public boolean comer(String comida){
         if(comida != null)
         {
             Return True;
         }
         Return False;
     }
-    public string darMedalla(integer place)
-    {
-        
+    
+    public string darMedalla(integer place){
     	String medalColor;
     
     	Switch on place{
@@ -80,12 +72,12 @@ public class Animal {
             }
         return medalColor;
     }
-    public void nacer()
-    {
+    
+    public void nacer(){
         edad =0;
     }
-    public double crecer()
-    {
+    
+    public double crecer(){
         edad +=0.1;
         return edad;
         

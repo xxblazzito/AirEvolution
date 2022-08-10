@@ -8,7 +8,7 @@ public with sharing class VueloTriggerHandler implements triggerHandler {
         this.triggerSize = triggerSize;
     }
     public void beforeInsert(List<Product2> newAccounts){
-      
+      	NombreVuelo(newAccounts);
         }
     public void beforeUpdate(List<Product2> oldAccounts,List<Product2> newAccounts,Map<ID,SObject> oldAccountMap,Map<ID,SObject> newAccountMap){
         desactivarVuelos(newAccounts);
@@ -17,7 +17,7 @@ public with sharing class VueloTriggerHandler implements triggerHandler {
         // code here
         }
     public void afterInsert(List<Product2> newAccounts,Map<ID,SObject> newAccountMap){
-        
+        AsignarTripulacion(newAccounts);
         }
     public void afterUpdate(List<Product2> oldAccounts,List<Product2> newAccounts,Map<ID,SObject> oldAccountMap, Map<ID,SObject> newAccountMap){
         // code here
@@ -41,5 +41,26 @@ public with sharing class VueloTriggerHandler implements triggerHandler {
                 }     
             }
         }
-    }   
+    } 
+    public void NombreVuelo(List<Product2> vuelos){
+        for(Product2 v : vuelos){
+            String numeroRandom = EncodingUtil.convertToHex(Crypto.generateAesKey(128)).substring(0, 6);
+            v.Name = 'AE-'+numeroRandom;
+        }
+    }
+
+    public void AsignarTripulacion(List<Product2> vuelos){
+        for(Product2 v : vuelos){
+            DateTime fecha = (v.Fecha_y_hora_de_partida__c).addDays(-7);
+            integer segundo = 0;
+            integer minuto = 0;
+            integer hora = 0;
+            integer dia = fecha.day();
+            integer mes = fecha.month();
+            
+            schedulableAsignarTripulacion m = new schedulableAsignarTripulacion(v.ID);
+            String sch = '0 0 0 '+ dia + ' ' + mes + ' ? *';
+            String jobID = system.schedule(v.Name, sch, m);
+        }
+    }
 }

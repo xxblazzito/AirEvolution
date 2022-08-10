@@ -1,5 +1,6 @@
 import { LightningElement, wire, track, api } from 'lwc';
- import listaVuelos from '@salesforce/apex/contactoReserva.obtenerVuelos';
+import listaVuelos from '@salesforce/apex/contactoReserva.obtenerVuelos';
+import creacionTiquete from '@salesforce/apex/contactoReserva.crearTiquete';
 
 const columns = [
     { label: 'Nombre del Vuelo', fieldName: 'codigo', sortable: "true" },
@@ -7,7 +8,7 @@ const columns = [
     { label: 'Pais de Partida', fieldName: 'aeropuertoPartidaPais',wrapText: true, sortable: "true"},
     { label: 'Aeropuerto de Llegada', fieldName: 'aeropuertoLlegada',wrapText: true, sortable: "true"},
     { label: 'Pais de Llegada', fieldName: 'aeropuertoLlegadaPais',wrapText: true, sortable: "true"},
-    { label: 'Precio de Venta', fieldName: 'precioUnitario', wrapText: true, sortable: "true"},
+    { label: 'Precio de Venta', fieldName: 'precioUnitario', wrapText: true, sortable: "true", type:"currency"},
     { label: 'Fecha y Hora de Partida', fieldName: 'fechaPartida',wrapText: true, type: "date",
     typeAttributes:{
         year: "numeric",
@@ -32,7 +33,14 @@ export default class ListarVuelos extends LightningElement {
     @track sortBy;
     @track sortDirection;
     @track isModalOpen = false;
+    @track idsVuelos;
     @api idPrecio;
+    @api idContacto;
+    @api idReserva;
+    ids= [];
+    idVueloSolito;
+    @track tiquetesPrincipal;
+    
 
     @wire(listaVuelos,{idListaPrecios: '$idPrecio'})vuelos(result){
         console.log(this.idPrecio);
@@ -49,26 +57,47 @@ export default class ListarVuelos extends LightningElement {
         }
     }
 
+    nuevoTiquete(){
+        console.log('se dio al boton de crear reserva');
+        
+    }
+    /*getSelectedIds(event){
+        const selectedRows = Event.detail.selectedRows;
+        // Display that fieldName of the selected rows
+        for (let i = 0; i < selectedRows.length; i++) {
+            //alert('You selected: ' + selectedRows[i].idVuelo);
+            this.ids.push(selectedRows[i].idVuelo);
+        }
+    }*/
+
     getSelectedRec() {
-        this.isModalOpen = true;
         var selectedRecords =  this.template.querySelector("lightning-datatable").getSelectedRows();
         if(selectedRecords.length > 0){
             console.log('selectedRecords are ', selectedRecords);
             console.log('id precio'+ this.idPrecio );
-   
-            let ids = '';
             selectedRecords.forEach(currentItem => {
-                ids = ids + ',' + currentItem.idVuelo;
-            });
-            this.selectedIds = ids.replace(/^,/, '');
-            this.lstSelectedRecords = selectedRecords;
-            console.log(this.selectedIds);
-        }   
-    }
+                //ids = ids + ',' + currentItem.idVuelo;
+                this.idVueloSolito= currentItem.idVuelo;
+                console.log('vuelo actual: '+ this.idVueloSolito);
+                this.ids.push(this.idVueloSolito);
+        });
+        console.log('array vuelos'+ this.ids.length);
+        console.log(this.ids);
+        creacionTiquete({reserva: this.idReserva, vuelo: this.ids, contacto: this.idContacto})
+            .then((resultado)=> {
+                this.tiquetesPrincipal = this.resultado;
+                console.log('se ha creado exitosamente los tiquetes');
+                console.log('creado: '+this.resultado);
+                this.error= undefined;
+            }).catch((errores) => {
+                console.log('error: '+this.errores);
+            })
+        } 
+    } 
 
-    doSorting(event) {
-        this.sortBy = event.detail.fieldName;
-        this.sortDirection = event.detail.sortDirection;
+    doSorting(evento) {
+        this.sortBy = evento.detail.fieldName;
+        this.sortDirection = evento.detail.sortDirection;
         this.sortData(this.sortBy, this.sortDirection);
     }
 
@@ -90,12 +119,8 @@ export default class ListarVuelos extends LightningElement {
         this.data = parseData;
     } 
 
-    openModal() {
-        // to open modal set isModalOpen tarck value as true
-        this.isModalOpen = true;
+    notificacion(mensaje){
+        
     }
-    closeModal() {
-        // to close modal set isModalOpen tarck value as false
-        this.isModalOpen = false;
-    }
+    
 }

@@ -53,7 +53,7 @@
                     <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate" if:true={reservaExiste}>Reserva Existente</h2>
                 </header>
                 <!-- Modal/Popup Box LWC body starts here -->
-                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="height: 700px;">
                     <div if:true={reservaExiste}>
                         <p>Le informamos que el usuario {contactito.Name} tiene una reserva con el nombre {reserva.Name} en estado {reserva.StageName}.</p>
                         <p>Debe pagar o cancelar dicha reserva para continuar con el proceso de asignacion.</p>
@@ -78,8 +78,13 @@
                         <br>
                     </div>
                         <lightning-card title="Seleccionar Vuelo" if:true={creardaReservita}>
-                            <c-listar-vuelos id-precio={reservaListaPrecio} if:true={creardaReservita}></c-listar-vuelos>
+                            <div>
+                                <c-listar-vuelos id-precio={reservaListaPrecio} id-contacto={idcontact} id-reserva={reservaId} if:true={creardaReservita}></c-listar-vuelos>
+                            </div>
+                            
                         </lightning-card>
+                        
+                        
                         
                 </div>
                 <footer class="slds-modal__footer">
