@@ -70,6 +70,14 @@ public with sharing class contactoReserva {
         } 
     }
 
+    @auraEnabled(cacheable=true)
+    public static List<OpportunityLineItem> obtenerPasajeros(string idReserva, string idTitular){
+        List<OpportunityLineItem> tiquetesPasajeros = [Select Id, Pasajero__r.Name, Product2Id, Asiento__c From OpportunityLineItem Where
+                                                            OpportunityId =: idReserva And Pasajero__c != :idTitular];
+
+        return tiquetesPasajeros;
+    }
+    
     @AuraEnabled
     public static List<OpportunityLineItem> crearTiquete(string reserva, List<string> vuelo, string contacto, string equipaje){
         try {
@@ -83,8 +91,7 @@ public with sharing class contactoReserva {
             return tiquetes;
         } catch (Exception e) {
             throw new personalizadaException('se ha producido un error: '+e);
-        }
-        
+        } 
     }
 
     public class ctoReserva{
@@ -132,6 +139,5 @@ public with sharing class contactoReserva {
             precioUnitario = precio;
         }
     }
-
     public class personalizadaException extends Exception {}
 }

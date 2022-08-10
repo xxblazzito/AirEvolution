@@ -1,6 +1,7 @@
 import { LightningElement, wire, track, api } from 'lwc';
 import listaVuelos from '@salesforce/apex/contactoReserva.obtenerVuelos';
 import creacionTiquete from '@salesforce/apex/contactoReserva.crearTiquete';
+import comprobarContacto from '@salesforce/apex/contactoReserva.clienteReserva'; 
 
 const columns = [
     { label: 'Nombre del Vuelo', fieldName: 'codigo', sortable: "true" },
@@ -40,7 +41,33 @@ export default class ListarVuelos extends LightningElement {
     ids= [];
     idVueloSolito;
     @track tiquetesPrincipal;
-    
+    value = 'Cedula de Ciudadania';
+    contactito;
+    existeContacto = false;
+    noExisteContacto = false;
+    tiqueteExitoso = false;
+
+    get options() {
+        return [
+            { label: 'Cedula de Ciudadania', value: 'Cedula de Ciudadania' },
+            { label: 'Cedula de Extranjeria', value: 'Cedula de Extranjeria' },
+            { label: 'Tarjeta de Identidad', value: 'Tarjeta de Identidad' },
+        ];
+    }
+
+    handleChange(event) {
+        
+        switch(event.target.name){
+            case 'tipoId':
+                this.value = event.detail.value;
+                console.log("lista-->"+this.value);
+                break;
+            case 'nroId':
+                this.numeroIdent= event.detail.value;
+                console.log("numero-->"+this.numeroIdent);
+                break;
+        }
+    }
 
     @wire(listaVuelos,{idListaPrecios: '$idPrecio'})vuelos(result){
         console.log(this.idPrecio);
@@ -56,19 +83,6 @@ export default class ListarVuelos extends LightningElement {
             this.data = undefined;
         }
     }
-
-    nuevoTiquete(){
-        console.log('se dio al boton de crear reserva');
-        
-    }
-    /*getSelectedIds(event){
-        const selectedRows = Event.detail.selectedRows;
-        // Display that fieldName of the selected rows
-        for (let i = 0; i < selectedRows.length; i++) {
-            //alert('You selected: ' + selectedRows[i].idVuelo);
-            this.ids.push(selectedRows[i].idVuelo);
-        }
-    }*/
 
     getSelectedRec() {
         var selectedRecords =  this.template.querySelector("lightning-datatable").getSelectedRows();
@@ -87,7 +101,7 @@ export default class ListarVuelos extends LightningElement {
             .then((resultado)=> {
                 this.tiquetesPrincipal = this.resultado;
                 console.log('se ha creado exitosamente los tiquetes');
-                console.log('creado: '+this.resultado);
+                this.tiqueteExitoso = true;
                 this.error= undefined;
             }).catch((errores) => {
                 console.log('error: '+this.errores);
@@ -118,6 +132,60 @@ export default class ListarVuelos extends LightningElement {
         });
         this.data = parseData;
     } 
+
+    get idcontact(){
+        if(this.contactito != null){
+            return this.contactito.Id;
+        }else{
+            return '';
+        }
+    }
+
+    get namecontact(){
+        if(this.contactito != null){
+            return this.contactito.Name;
+        }else{
+            return '';
+        }
+    }
+
+    get numidcontact(){
+        if(this.contactito != null){
+            return this.contactito.Numero_de_Identificacion__c;
+        }else{
+            return '';
+        }
+    }
+
+    get pasaportecontact(){
+        if(this.contactito != null){
+            return this.contactito.Numero_de_pasaporte__c;
+        }else{
+            return '';
+        }
+    }
+
+    buscarContacto(event){
+        console.log(this.numeroIdent + this.value);
+        comprobarContacto({tipoId: this.value, numId: this.numeroIdent})
+            .then((result) => {
+                this.contactito= result.contacto;
+                console.log('contacto-->'+this.contactito);
+                if(this.contactito == undefined){
+                    this.noExisteContacto = true;
+                    this.existeContacto = false;
+                }else{
+                    this.existeContacto = true;
+                    this.noExisteContacto = false;
+                }
+                this.error = undefined;
+                
+            }).catch((error) => {
+                this.error = error;
+                this.contactito = undefined;
+            });
+
+    }
 
     notificacion(mensaje){
         

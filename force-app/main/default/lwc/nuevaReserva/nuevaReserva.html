@@ -16,18 +16,6 @@
             <lightning-button class="slds-align_absolute-center" label="Buscar" value="brand" onclick={buscarContacto}></lightning-button>
         </lightning-layout-item>
     </lightning-layout>
-    <template if:true={existeContacto}>
-        <br>
-        <lightning-layout multiple-rows class="busqueda">
-            <lightning-layout-item size="12" class="itemss">
-                <h2>Informacion del usuario</h2>
-                <lightning-input type="text" label="Nombre Completo" value={namecontact} read-only></lightning-input>
-                <lightning-input type="text" label="Numero de Identificacion" value={numidcontact} read-only></lightning-input>
-                <lightning-input type="text" label="Numero de Pasaporte" value={pasaportecontact} read-only></lightning-input>
-            </lightning-layout-item>
-        </lightning-layout>
-    </template>
-    
     <template if:true={noExisteContacto}>
         <br>  
         <lightning-layout multiple-rows class="busqueda">
@@ -54,38 +42,51 @@
                 </header>
                 <!-- Modal/Popup Box LWC body starts here -->
                 <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="height: 700px;">
-                    <div if:true={reservaExiste}>
-                        <p>Le informamos que el usuario {contactito.Name} tiene una reserva con el nombre {reserva.Name} en estado {reserva.StageName}.</p>
-                        <p>Debe pagar o cancelar dicha reserva para continuar con el proceso de asignacion.</p>
-                    </div>
-                    <div if:true={reservaNoExiste}>
-                        <div if:false={creardaReservita}>
-                            <lightning-combobox
-                                name="listaPrecio"
-                                label="Seleccionar tipo de Reserva"
-                                value={precioSeleccionado}
-                                placeholder="Selecciona el tipo de Reserva"
-                                options={listadoPrecios}
-                                onchange={handleChange} ></lightning-combobox>
-                            <lightning-button label="Crear Reserva" onclick={createReserva}></lightning-button>
-                        </div>
-                        <div if:true={creardaReservita}>
-                            <p>Ser ha creado la reserva Exitosamente</p>
-                            <br>
-                            <lightning-input label="Estado de la Reserva" value={reservaEstado} read-only></lightning-input>
-                            <lightning-input label="id lista de precio" value={reservaListaPrecio} read-read></lightning-input>
-                        </div>
-                        <br>
-                    </div>
-                        <lightning-card title="Seleccionar Vuelo" if:true={creardaReservita}>
-                            <div>
-                                <c-listar-vuelos id-precio={reservaListaPrecio} id-contacto={idcontact} id-reserva={reservaId} if:true={creardaReservita}></c-listar-vuelos>
+                    <lightning-accordion allow-multiple-sections-open active-section-name="A">
+                        <lightning-accordion-section name="A" label="Informacion">
+                            <template if:true={existeContacto}>
+                                <lightning-layout multiple-rows class="busqueda">
+                                    <lightning-layout-item size="6" class="itemss">
+                                        <lightning-input type="text" label="Nombre Completo" value={namecontact} read-only></lightning-input>
+                                        <lightning-input type="text" label="Numero de Pasaporte" value={pasaportecontact} read-only></lightning-input>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item size="6" class="itemss">
+                                        <lightning-input type="text" label="Numero de Identificacion" value={numidcontact} read-only></lightning-input>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                            </template>    
+                        </lightning-accordion-section>
+                        <lightning-accordion-section name="B" label="Tiquete">
+                            <div if:true={reservaExiste}>
+                                <p>Le informamos que el usuario {contactito.Name} tiene una reserva con el nombre {reserva.Name} en estado {reserva.StageName}.</p>
+                                <p>Debe pagar o cancelar dicha reserva para continuar con el proceso de asignacion.</p>
                             </div>
-                            
-                        </lightning-card>
-                        
-                        
-                        
+                            <div if:true={reservaNoExiste}>
+                                <div if:false={creardaReservita}>
+                                    <lightning-combobox
+                                        name="listaPrecio"
+                                        label="Seleccionar tipo de Reserva"
+                                        value={precioSeleccionado}
+                                        placeholder="Selecciona el tipo de Reserva"
+                                        options={listadoPrecios}
+                                        onchange={handleChange} ></lightning-combobox>
+                                    <lightning-button label="Crear Reserva" onclick={createReserva}></lightning-button>
+                                </div>
+                                <div if:true={creardaReservita}>
+                                    <p>Ser ha creado la reserva Exitosamente</p>
+                                    <br>
+                                    <lightning-input label="Estado de la Reserva" value={reservaEstado} read-only></lightning-input>
+                                    <lightning-input label="id lista de precio" value={reservaListaPrecio} read-read></lightning-input>
+                                </div>
+                                <br>
+                            </div>
+                            <lightning-card title="Seleccionar Vuelo" if:true={creardaReservita}>
+                                <div>
+                                    <c-listar-vuelos id-precio={reservaListaPrecio} id-contacto={idcontact} id-reserva={reservaId} if:true={creardaReservita}></c-listar-vuelos>
+                                </div>
+                            </lightning-card>
+                        </lightning-accordion-section>
+                    </lightning-accordion>  
                 </div>
                 <footer class="slds-modal__footer">
                     <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Deacuerdo</button>

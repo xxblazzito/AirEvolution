@@ -16,4 +16,40 @@
     <p>id lista de precio: {idPrecio}</p>
     <p>id del contacto:{idContacto}</p>
     <p>id de la reserva: {idReserva}</p>
+    <lightning-layout multiple-rows if:true={tiqueteExitoso}>
+        <lightning-layout-item size="12" class="itemss">
+            <lightning-combobox
+                name="tipoId"
+                label="Tipo de Identificacion"
+                value={value}
+                placeholder="Selecciona el tipo de identificacion"
+                options={options}
+                onchange={handleChange} ></lightning-combobox>
+            </lightning-layout-item>
+        <lightning-layout-item size="12" class="itemss">
+            <lightning-input name="nroId" onchange={handleChange} label="Numero de Identificacion" type="text" required></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" class="itemss">
+            <lightning-button class="slds-align_absolute-center" label="Buscar" value="brand" onclick={buscarContacto}></lightning-button>
+        </lightning-layout-item>
+    </lightning-layout>
+    <template if:true={noExisteContacto}>
+        <br>  
+        <lightning-layout multiple-rows class="busqueda">
+            <lightning-layout-item size="12" class="itemss">
+               <c-crear-contacto tipo-id={value} num-id={numeroIdent}></c-crear-contacto>
+            </lightning-layout-item>
+        </lightning-layout>
+    </template>
+    <template if:true={existeContacto}>
+        <lightning-layout multiple-rows class="busqueda">
+            <lightning-layout-item size="6" class="itemss">
+                <lightning-input type="text" label="Nombre Completo" value={namecontact} read-only></lightning-input>
+                <lightning-input type="text" label="Numero de Pasaporte" value={pasaportecontact} read-only></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" class="itemss">
+                <lightning-input type="text" label="Numero de Identificacion" value={numidcontact} read-only></lightning-input>
+            </lightning-layout-item>
+        </lightning-layout>
+    </template>    
 </template>
