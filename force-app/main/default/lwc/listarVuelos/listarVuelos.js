@@ -2,6 +2,7 @@ import { LightningElement, wire, track, api } from 'lwc';
 import listaVuelos from '@salesforce/apex/contactoReserva.obtenerVuelos';
 import creacionTiquete from '@salesforce/apex/contactoReserva.crearTiquete';
 import comprobarContacto from '@salesforce/apex/contactoReserva.clienteReserva'; 
+import creacionPasajero from '@salesforce/apex/contactoReserva.crearTiquete';
 
 const columns = [
     { label: 'Nombre del Vuelo', fieldName: 'codigo', sortable: "true" },
@@ -185,6 +186,25 @@ export default class ListarVuelos extends LightningElement {
                 this.contactito = undefined;
             });
 
+    }
+
+    limpiar(){
+        this.value = '';
+        this.numeroIdent = '';
+        this.existeContacto = false;
+    }
+
+    crearPasajero(){
+        console.log('crear pasajero');
+        creacionPasajero({reserva: this.idReserva, vuelo: this.ids, contacto: this.idcontact})
+            .then((resultado)=> {
+                this.tiquetesPrincipal = this.resultado;
+                console.log('se ha creado exitosamente los tiquetes');
+                this.tiqueteExitoso = true;
+                this.error= undefined;
+            }).catch((errores) => {
+                console.log('error: '+this.errores);
+            })
     }
 
     notificacion(mensaje){

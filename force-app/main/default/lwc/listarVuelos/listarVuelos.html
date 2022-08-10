@@ -42,15 +42,17 @@
             </lightning-layout-item>
         </lightning-layout>
     </template>
-    <template if:true={existeContacto}>
-        <lightning-layout multiple-rows class="busqueda">
-            <lightning-layout-item size="6" class="itemss">
-                <lightning-input type="text" label="Nombre Completo" value={namecontact} read-only></lightning-input>
-                <lightning-input type="text" label="Numero de Pasaporte" value={pasaportecontact} read-only></lightning-input>
-            </lightning-layout-item>
-            <lightning-layout-item size="6" class="itemss">
-                <lightning-input type="text" label="Numero de Identificacion" value={numidcontact} read-only></lightning-input>
-            </lightning-layout-item>
-        </lightning-layout>
-    </template>    
+    <lightning-card  title="Asignar Pasajeros" if:true={existeContacto}>
+        <lightning-button label="Limpiar" slot="actions" onclick={limpiar}></lightning-button>
+        <lightning-button label="Asignar" slot="actions" onclick={crearPasajero}></lightning-button>
+            <lightning-layout multiple-rows class="busqueda">
+                <lightning-layout-item size="6" class="itemss">
+                    <lightning-input type="text" label="Nombre Completo" value={namecontact} read-only></lightning-input>
+                    <lightning-input type="text" label="Numero de Pasaporte" value={pasaportecontact} read-only></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" class="itemss">
+                    <lightning-input type="text" label="Numero de Identificacion" value={numidcontact} read-only></lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+    </lightning-card>
 </template>
