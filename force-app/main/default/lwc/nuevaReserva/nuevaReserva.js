@@ -1,3 +1,4 @@
+/* importa todo lo necesario para el componente. */
 import { LightningElement, wire, track, api } from 'lwc';
 import comprobarContacto from '@salesforce/apex/contactoReserva.clienteReserva'; 
 import crearteReserva from '@salesforce/apex/contactoReserva.crearReserva';

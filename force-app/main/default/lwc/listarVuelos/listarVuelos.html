@@ -17,6 +17,14 @@
     <p>id del contacto:{idContacto}</p>
     <p>id de la reserva: {idReserva}</p>
     <lightning-layout multiple-rows if:true={tiqueteExitoso}>
+        <div>
+            <lightning-datatable
+            key-field="id"
+            data={datos}                
+            columns={columnas}
+            hide-checkbox-column>
+        </lightning-datatable>
+        </div>
         <lightning-layout-item size="12" class="itemss">
             <lightning-combobox
                 name="tipoId"
@@ -27,7 +35,7 @@
                 onchange={handleChange} ></lightning-combobox>
             </lightning-layout-item>
         <lightning-layout-item size="12" class="itemss">
-            <lightning-input name="nroId" onchange={handleChange} label="Numero de Identificacion" type="text" required></lightning-input>
+            <lightning-input name="nroId" onchange={handleChange} label="Numero de Identificacion" type="text" value={numeroIdent} required></lightning-input>
         </lightning-layout-item>
         <lightning-layout-item size="12" class="itemss">
             <lightning-button class="slds-align_absolute-center" label="Buscar" value="brand" onclick={buscarContacto}></lightning-button>
