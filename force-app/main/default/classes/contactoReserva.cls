@@ -75,7 +75,7 @@ public with sharing class contactoReserva {
         try {
             List<OpportunityLineItem> tiquetesPasajeros = [Select Id, Pasajero__r.Name, Product2Id, Asiento__c From OpportunityLineItem Where
                                                             OpportunityId =: idReserva And Pasajero__c != :idTitular];
-
+			
             return tiquetesPasajeros;
         } catch (Exception e) {
             throw new personalizadaException('se ha producido un error: '+e);
