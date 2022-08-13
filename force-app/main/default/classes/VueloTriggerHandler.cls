@@ -58,9 +58,42 @@ public with sharing class VueloTriggerHandler implements triggerHandler {
             integer dia = fecha.day();
             integer mes = fecha.month();
             
-            schedulableAsignarTripulacion m = new schedulableAsignarTripulacion(v.ID);
+            schedulableAsignarTripulacion m = new schedulableAsignarTripulacion(v.ID,v.Name);
             String sch = '0 0 0 '+ dia + ' ' + mes + ' ? *';
-            String jobID = system.schedule(v.Name, sch, m);
+            String jobID = system.schedule('Asignar Tripulacion: '+v.Name, sch, m);
+        }
+    }
+
+    public void notificacionTripulacion(List<Product2> vuelos){
+        for(Product2 v : vuelos){
+            Messaging.CustomNotification notification = new Messaging.CustomNotification();
+            CustomNotificationType notificationType = 
+            [SELECT Id, DeveloperName 
+             FROM CustomNotificationType 
+             WHERE DeveloperName='Asignar_Tripulantes'];
+        
+            // Create a new custom notification
+            List<user> usuarios = [select id, name from user where UserRole.Name = 'Administrador del sistema'];
+            set<String> ids = new set<String>();
+            for(user a: usuarios){
+                ids.add(a.Id);
+            }
+
+            // Set the contents for the notification
+            notification.setTitle('Asignar Tripulacion al vuelo:  '+ v.Name);
+            notification.setBody('El vuelo esta proximo a salir! no olvide asignar la tripulacion');
+
+            // Set the notification type and target
+            notification.setNotificationTypeId(notificationType.Id);
+            notification.setTargetId(v.Id);
+            
+            // Actually send the notification
+            try {
+                notification.send(ids);
+            }
+            catch (Exception e) {
+                System.debug('Problem sending notification: ' + e.getMessage());
+            }
         }
     }
 }
