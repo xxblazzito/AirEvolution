@@ -1,5 +1,6 @@
 public class schedulableAsignarTripulacion implements Schedulable {
-	Public String IdVuelo;
+	Public String idVuelo;
+    Public String nameVuelo;
     Messaging.CustomNotification notification = new Messaging.CustomNotification();
     
     public void execute(SchedulableContext ctx) {
@@ -16,7 +17,7 @@ public class schedulableAsignarTripulacion implements Schedulable {
         }
 
         // Set the contents for the notification
-        notification.setTitle('Asignar Tripulacion');
+        notification.setTitle('Asignar Tripulacion al Vuelo: '+ nameVuelo);
         notification.setBody('El vuelo esta proximo a salir! no olvide asignar la tripulacion');
 
         // Set the notification type and target
@@ -32,12 +33,9 @@ public class schedulableAsignarTripulacion implements Schedulable {
         }
     }
     
-    public schedulableAsignarTripulacion(string vuelo){
-        if(vuelo == null){
-            IdVuelo = vuelo;
-        }else{
-            IdVuelo = vuelo;
-        }
+    public schedulableAsignarTripulacion(string vuelo, string name){
+        idVuelo = vuelo;
+        nameVuelo = name;
         
     }
 }

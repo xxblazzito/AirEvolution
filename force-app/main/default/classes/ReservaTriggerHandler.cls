@@ -20,7 +20,7 @@ public with sharing class ReservaTriggerHandler implements triggerHandler {
         
     }
     public void afterUpdate(List<Opportunity> oldAccounts,List<Opportunity> newAccounts,Map<ID,SObject> oldAccountMap, Map<ID,SObject> newAccountMap){
-        // code here
+        ReservaPagada(newAccounts);
     }
     public void afterDelete(List<Opportunity> oldAccounts,Map<ID,SObject> oldAccountMap){
         // code here
@@ -52,6 +52,21 @@ public with sharing class ReservaTriggerHandler implements triggerHandler {
             }
         }
     }
-
     
+    public static void ReservaPagada(List<Opportunity> oportunidades){
+        List<String> idContactos= new list<String>();
+        for(Opportunity reserva: oportunidades){
+            if(reserva.StageName == 'Pagado'){
+            	idContactos.add(reserva.Titular_de_la_reserva__c);
+            }
+        }
+        if(idContactos.size()>0){
+           EmailTemplate et=[Select id from EmailTemplate where name = 'Querido pasajero de reserva' limit 1];
+           Messaging.MassEmailMessage mail = new Messaging.MassEmailMessage();
+           mail.setTargetObjectIds(idContactos);
+           mail.setSenderDisplayName('System Admin');
+           mail.setTemplateId(et.id);
+           Messaging.sendEmail(new Messaging.MassEmailMessage[] { mail }); 
+        }
+ 	}
 }
