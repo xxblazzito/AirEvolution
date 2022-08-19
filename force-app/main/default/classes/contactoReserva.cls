@@ -70,13 +70,25 @@ public with sharing class contactoReserva {
         } 
     }
 
-    @auraEnabled(cacheable=true)
-    public static List<OpportunityLineItem> obtenerPasajeros(string idReserva, string idTitular){
+    @auraEnabled
+    public static List<pasajero> obtenerPasajeros(string idReserva, string idTitular){
         try {
-            List<OpportunityLineItem> tiquetesPasajeros = [Select Id, Pasajero__r.Name, Product2Id, Asiento__c From OpportunityLineItem Where
+            List<pasajero> pasajerosTiquete = new List<pasajero>();
+            List<OpportunityLineItem> tiquetesPasajeros = [Select Id, Pasajero__r.Name, Asiento__c, Product2Id From OpportunityLineItem Where
                                                             OpportunityId =: idReserva And Pasajero__c != :idTitular];
-			
-            return tiquetesPasajeros;
+            List<Id> idVuelos = new List<Id>();
+            for(OpportunityLineItem a: tiquetesPasajeros ){
+                idVuelos.add(a.Product2Id);
+            }
+            List<Product2> vuelosName = [Select Id,Name from Product2 Where Id IN : idVuelos];
+            for(OpportunityLineItem tiquetes: tiquetesPasajeros){
+                for(Product2 vuelos: vuelosName){
+                    if(tiquetes.Product2Id == vuelos.Id){
+                        pasajerosTiquete.add(new pasajero(tiquetes.Pasajero__r.Name, tiquetes.Asiento__c, vuelos.Name));
+                    }
+                }
+            }			
+            return pasajerosTiquete;
         } catch (Exception e) {
             throw new personalizadaException('se ha producido un error: '+e);
         }
@@ -95,7 +107,7 @@ public with sharing class contactoReserva {
             insert tiquetes;
             return tiquetes;
         } catch (Exception e) {
-            throw new personalizadaException('se ha producido un error: '+e);
+            throw new personalizadaException('se ha producido un error asignando el pasajero: '+e);
         } 
     }
 
@@ -108,6 +120,21 @@ public with sharing class contactoReserva {
         public ctoReserva(Contact cliente, Opportunity reserva){
             contacto = cliente;
             oportunidad = reserva;
+        }
+    }
+
+    public class pasajero{
+        @auraEnabled 
+        public String nombre;
+        @auraEnabled 
+        public String asiento;
+        @auraEnabled 
+        public String vueloName;
+        
+        public pasajero(string pasajero, string silla, string vuelo){
+            nombre = pasajero;
+            asiento = silla;
+            vueloName = vuelo;
         }
     }
 

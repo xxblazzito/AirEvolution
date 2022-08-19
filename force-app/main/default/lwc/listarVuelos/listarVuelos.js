@@ -35,8 +35,9 @@ const columns = [
 
 /* Declarar las columnas de la tabla que se utilizarán para mostrar los pasajeros. */
 const columnas = [
-    {label: 'Nombre del pasajero', fieldName: 'Pasajero__r.Name'},
-    {label: 'Asiento', fieldName: 'Asiento__c'},
+    {label: 'Nombre del pasajero', fieldName: 'nombre'},
+    {label: 'Asiento', fieldName: 'asiento'},
+    {label: 'Vuelo', fieldName: 'vueloName'},
 ]
 
 export default class ListarVuelos extends LightningElement {
@@ -52,6 +53,7 @@ export default class ListarVuelos extends LightningElement {
     @api idReserva;
     ids= [];
     idVueloSolito;
+    masPasajeros;
     @track tiquetesPrincipal;
     value = 'Cedula de Ciudadania';
     contactito;
@@ -97,11 +99,12 @@ export default class ListarVuelos extends LightningElement {
         listaPasajeros({idReserva: this.idReserva , idTitular: this.idContacto})
             .then((resultado)=> {
                 this.datos = resultado;
+                this.masPasajeros = true;
                 console.log('lista pasajeros');
                 console.log(resultado);
             }).catch((errores) => {
                 console.log('error:');
-                console.log(this.errores);
+                console.log(errores);
             })
     }
 
@@ -258,14 +261,15 @@ export default class ListarVuelos extends LightningElement {
         `reserva`, `vuelo` y `contacto`. Crea el Tiquete de los demas Pasajeros. */
         creacionPasajero({reserva: this.idReserva, vuelo: this.ids, contacto: this.idcontact})
             .then((resultado)=> {
-                this.tiquetesPrincipal = this.resultado;
+                this.tiquetesPrincipal = resultado;
                 console.log('se ha creado exitosamente los tiquetes');
                 this.tiqueteExitoso = true;
                 this.error= undefined;
                 this.notificacion('Se ha agregado correctamente el pasajero');
                 this.listadoPasajeros();
             }).catch((errores) => {
-                console.log('error: '+this.errores);
+                console.log('error: ');
+                console.log(errores);
             })
     }
 

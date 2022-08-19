@@ -1,38 +1,32 @@
 <template>
-    <div style="height: 350px; border-style: solid; border-color: rgb(106, 143, 230); " >
-        <lightning-datatable
-            key-field="idVuelo"
-            data={data}                
-            columns={columns}
-            onrowaction={handlerRowAction}
-            max-row-selection="4"
-            sorted-by={sortBy}
-            sorted-direction={sortDirection}
-            onsort={doSorting}>
-        </lightning-datatable>
-    </div>
-    <lightning-button onclick={getSelectedRec} label="Seleccionar Vuelos"></lightning-button>
-    <br>
-    <p>id lista de precio: {idPrecio}</p>
-    <p>id del contacto:{idContacto}</p>
-    <p>id de la reserva: {idReserva}</p>
-    <lightning-layout multiple-rows if:true={tiqueteExitoso}>
-        <div>
+    <lightning-card title="Seleccionar Vuelos" if:false={tiqueteExitoso}>
+        <div style="height: 350px; border-style: solid; border-color: rgb(106, 143, 230); " >
             <lightning-datatable
-            key-field="id"
-            data={datos}                
-            columns={columnas}
-            hide-checkbox-column>
-        </lightning-datatable>
+                key-field="idVuelo"
+                data={data}                
+                columns={columns}
+                onrowaction={handlerRowAction}
+                max-row-selection="4"
+                sorted-by={sortBy}
+                sorted-direction={sortDirection}
+                onsort={doSorting}>
+            </lightning-datatable>
         </div>
+        <lightning-button onclick={getSelectedRec} label="Seleccionar Vuelos" ></lightning-button>
+    </lightning-card>
+    <br>
+    <lightning-layout multiple-rows if:true={tiqueteExitoso}>
         <lightning-layout-item size="12" class="itemss">
-            <lightning-combobox
-                name="tipoId"
-                label="Tipo de Identificacion"
-                value={value}
-                placeholder="Selecciona el tipo de identificacion"
-                options={options}
-                onchange={handleChange} ></lightning-combobox>
+            <lightning-card title="Agregar Pasajeros">
+                <lightning-combobox
+                    name="tipoId"
+                    label="Tipo de Identificacion"
+                    value={value}
+                    placeholder="Selecciona el tipo de identificacion"
+                    options={options}
+                    onchange={handleChange} >
+                </lightning-combobox>
+            </lightning-card>
             </lightning-layout-item>
         <lightning-layout-item size="12" class="itemss">
             <lightning-input name="nroId" onchange={handleChange} label="Numero de Identificacion" type="text" value={numeroIdent} required></lightning-input>
@@ -61,5 +55,15 @@
                     <lightning-input type="text" label="Numero de Identificacion" value={numidcontact} read-only></lightning-input>
                 </lightning-layout-item>
             </lightning-layout>
+    </lightning-card>
+    <lightning-card title="Listado de Pasajeros" if:true={masPasajeros}>
+        <div>
+            <lightning-datatable
+            key-field="id"
+            data={datos}                
+            columns={columnas}
+            hide-checkbox-column>
+            </lightning-datatable>
+        </div>
     </lightning-card>
 </template>

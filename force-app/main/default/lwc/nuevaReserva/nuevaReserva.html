@@ -76,15 +76,12 @@
                                     <p>Ser ha creado la reserva Exitosamente</p>
                                     <br>
                                     <lightning-input label="Estado de la Reserva" value={reservaEstado} read-only></lightning-input>
-                                    <lightning-input label="id lista de precio" value={reservaListaPrecio} read-read></lightning-input>
                                 </div>
                                 <br>
                             </div>
-                            <lightning-card title="Seleccionar Vuelo" if:true={creardaReservita}>
                                 <div>
                                     <c-listar-vuelos id-precio={reservaListaPrecio} id-contacto={idcontact} id-reserva={reservaId} if:true={creardaReservita}></c-listar-vuelos>
                                 </div>
-                            </lightning-card>
                         </lightning-accordion-section>
                     </lightning-accordion>  
                 </div>
