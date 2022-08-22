@@ -12,10 +12,12 @@ public class scheduledFuturasCuentasTest {
     
     @isTest
     static void pruebaSchedulable(){
+        integer dia = Date.today().addDays(1).day();
+        String conExpresion = '2022-08-'+dia +' 00:00:00';
         
         Test.startTest();
         scheduledFuturasCuentas m = new scheduledFuturasCuentas();
-        String sch = '0 0 1 1/1 * ? *';
+        String sch = '0 0 0 * * ? *';
         String jobID = system.schedule('Test Programado', sch, m);
         
         CronTrigger ct = [SELECT Id, CronExpression, TimesTriggered, NextFireTime
@@ -25,7 +27,7 @@ public class scheduledFuturasCuentasTest {
         
         system.assertEquals(0, ct.TimesTriggered);
         
-        system.assertEquals('2022-08-05 01:00:00',String.valueOf(ct.NextFireTime));
+        system.assertEquals(conExpresion,String.valueOf(ct.NextFireTime));
         
         Test.stopTest();
             

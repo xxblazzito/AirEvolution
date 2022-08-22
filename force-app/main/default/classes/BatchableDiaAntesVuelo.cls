@@ -25,11 +25,13 @@ public class BatchableDiaAntesVuelo implements Database.Batchable<sObject>{
                     for(PricebookEntry listaPrecio: entradaListaPrecios){
                         if(vuelo.Id == listaPrecio.Product2Id){
                             Decimal valor = listaPrecio.UnitPrice;
-                            if(listaPrecio.Descuento_Martes__c = true){
+                            if(listaPrecio.Descuento_Martes__c == true){
                                 valor = valor / 0.65;
                                 listaPrecio.UnitPrice = valor * 0.5;
                                 listaPrecio.Descuento_Martes__c = false;
                                 listaPrecio.Descuento_Por_Vencer__c= true;
+                            }else if(listaPrecio.Descuento_Por_Vencer__c == true){
+                                
                             }else{
                                 listaPrecio.UnitPrice = valor * 0.5;
                                 listaPrecio.Descuento_Martes__c = false;

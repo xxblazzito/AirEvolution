@@ -22,9 +22,6 @@ public class contactoReservaTest {
         Contact contactoSinReserva = new Contact (firstName = 'pablito', lastName = 'josefino', Tipo_de_Identificacion__c = 'Cedula de Ciudadania',
                                                   Numero_de_Identificacion__c= '99050903482', Nacionalidad__c = 'colombiano', ffecha_de_nacimiento__c = Date.newInstance(1999, 05, 09) );
         insert contactoSinReserva;
-        
-        Pricebook2 listaPrecios2 = new Pricebook2(Name = 'Turista');
-        insert listaPrecios2;
                            
         Contact contactoConReserva = new Contact (firstName = 'cristian', lastName = 'aguirre', Tipo_de_Identificacion__c = 'Cedula de Ciudadania', 
                                                   Numero_de_Identificacion__c= '1040758632', Nacionalidad__c = 'colombiano', ffecha_de_nacimiento__c = Date.newInstance(1999, 05, 09) );
@@ -141,8 +138,7 @@ public class contactoReservaTest {
         String idContactoPasajero = contactoPasajero.Id;
         contactoReserva.crearTiquete(idReserva, idVuelos, idContacto);
         contactoReserva.crearTiquete(idReserva, idVuelos, idContactoPasajero);
-        List<OpportunityLineItem> listaPasajeros = contactoReserva.obtenerPasajeros(idReserva, idContacto);
-        system.assertEquals(1, listaPasajeros.size());
+        system.assertEquals(1, contactoReserva.obtenerPasajeros(idReserva, idContacto).size());
         
     }
     

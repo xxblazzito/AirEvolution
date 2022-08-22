@@ -39,7 +39,24 @@ public class VueloTriggerHandlerTest {
         
         List<Product2> vuelitosActualizados = [Select Id From Product2 Where Motivo_de_cancelacion__c != null ];
         system.assertEquals(50, vuelitosActualizados.size());
+    }
+    @isTest
+    private static void deleteAndUndeleteVuelo(){
+        Product2 vuelo = [Select Id from Product2 Limit 1];
+        id idVuelo = vuelo.Id;
         
+        delete vuelo;
         
+        List<Product2> buscarVuelo = [Select id From Product2 Where Id =: idVuelo ];
+        
+        system.assertEquals(0, buscarVuelo.size());
+        
+        Product2 vuelito = new Product2(id = idVuelo);
+        
+        undelete vuelito;
+        
+        List<Product2> buscarVuelo1 = [Select id From Product2 Where Id =: vuelito.Id ];
+        
+        system.assertEquals(1, buscarVuelo1.size());
     }
 }

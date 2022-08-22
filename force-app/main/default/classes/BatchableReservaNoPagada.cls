@@ -14,7 +14,7 @@ public class BatchableReservaNoPagada implements Database.Batchable<sObject>{
             //Valido las horas que han transcurrido desde la ultima actualización de la reserva
             for (opportunity reserva : reservas) {
                     horaReserva = (reserva.LastModifiedDate).hour();
-                    if(horaActual - horaReserva == 3){
+                    if(horaActual - horaReserva >= 3){
                         reserva.StageName = 'No pagado';
                         idReservas.add(reserva.Id);
                     }

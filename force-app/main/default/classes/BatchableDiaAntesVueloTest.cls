@@ -1,5 +1,5 @@
 @isTest
-public class agregarDescuentoMartesTest {
+public class BatchableDiaAntesVueloTest {
 
     @testSetup
     static void makeData(){
@@ -27,25 +27,31 @@ public class agregarDescuentoMartesTest {
         insert aeropuertos;
         
         product2 vuelo = new product2(Name = 'ae56', Aeropuerto_de_partida__c =aeropuertos[0].id, Aeropuerto_de_llegada__c = aeropuertos[1].id,Estado__c = 'En Venta',IsActive = true,
-                                      Fecha_y_hora_de_partida__c = Date.newInstance(2022, 08, 22),Avion__c = avion.Id,
+                                      Fecha_y_hora_de_partida__c = Date.newInstance(2022, 08, 19),Avion__c = avion.Id,
                                       Fecha_y_hora_estimada_de_llegada__c = Date.newInstance(2022, 08, 23));
         insert vuelo;
-        
-        PricebookEntry entrada = new PricebookEntry(Pricebook2Id = pricebookId,UnitPrice=5000,Product2Id=vuelo.Id,IsActive = true);
-        insert entrada;
-        
-        PricebookEntry turisteando = new PricebookEntry(Pricebook2Id = turista.Id, UnitPrice=5000,Product2Id=vuelo.Id, IsActive = true);
-        insert turisteando;
     }
     
     @isTest
-    private static void descuentoMartes(){
+    private static void descuentoSinOtroDescuento(){
         Pricebook2 turista = [select id from Pricebook2 where Name = 'Turista' Limit 1];
+        
+        
+        string pricebookId = Test.getStandardPricebookId();
+        
+        Product2 vuelo = [select id from product2 limit 1];
+        
+        PricebookEntry entrada = new PricebookEntry(Pricebook2Id = pricebookId,UnitPrice=100000,Product2Id=vuelo.Id,IsActive = true, Descuento_Martes__c = false);
+        insert entrada;
+        
+        PricebookEntry turisteando = new PricebookEntry(Pricebook2Id = turista.Id, UnitPrice=100000,Product2Id=vuelo.Id, IsActive = true, Descuento_Martes__c = false);
+        insert turisteando;
+        
         integer dia = Date.today().addDays(1).day();
-        String conExpresion = '2022-08-'+dia +' 00:00:00';
+        string cronExpresion = '2022-08-'+dia+' 00:00:00';
         
         Test.startTest();
-        iniciarDescuentoMartes m = new iniciarDescuentoMartes();
+        schedulableDiaAntesVuelo m = new schedulableDiaAntesVuelo();
         String sch = '0 0 0 * * ? *';
         String jobID = system.schedule('Test Programado', sch, m);
         
@@ -56,13 +62,13 @@ public class agregarDescuentoMartesTest {
         
         system.assertEquals(0, ct.TimesTriggered);
         
-        system.assertEquals(conExpresion,String.valueOf(ct.NextFireTime));
+        system.assertEquals(cronExpresion,String.valueOf(ct.NextFireTime));
         
-        agregarDescuentoMartes batchClass = new agregarDescuentoMartes(); 
+        BatchableDiaAntesVuelo batchClass = new BatchableDiaAntesVuelo(); 
         ID batchprocessid = Database.executeBatch(batchClass) ;
         Test.stopTest();
         
         PricebookEntry precio = [Select UnitPrice from PricebookEntry Where Pricebook2Id =: turista.Id Limit 1];
-        system.assertEquals(3250, precio.UnitPrice);
+        system.assertEquals(50000, precio.UnitPrice);
     }
 }

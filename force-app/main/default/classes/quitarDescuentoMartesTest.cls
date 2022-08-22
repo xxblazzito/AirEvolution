@@ -1,5 +1,5 @@
 @isTest
-public class agregarDescuentoMartesTest {
+public class quitarDescuentoMartesTest {
 
     @testSetup
     static void makeData(){
@@ -31,10 +31,10 @@ public class agregarDescuentoMartesTest {
                                       Fecha_y_hora_estimada_de_llegada__c = Date.newInstance(2022, 08, 23));
         insert vuelo;
         
-        PricebookEntry entrada = new PricebookEntry(Pricebook2Id = pricebookId,UnitPrice=5000,Product2Id=vuelo.Id,IsActive = true);
+        PricebookEntry entrada = new PricebookEntry(Pricebook2Id = pricebookId,UnitPrice=3250,Product2Id=vuelo.Id,IsActive = true, Descuento_Martes__c = true);
         insert entrada;
         
-        PricebookEntry turisteando = new PricebookEntry(Pricebook2Id = turista.Id, UnitPrice=5000,Product2Id=vuelo.Id, IsActive = true);
+        PricebookEntry turisteando = new PricebookEntry(Pricebook2Id = turista.Id, UnitPrice=3250,Product2Id=vuelo.Id, IsActive = true, Descuento_Martes__c = true);
         insert turisteando;
     }
     
@@ -45,7 +45,7 @@ public class agregarDescuentoMartesTest {
         String conExpresion = '2022-08-'+dia +' 00:00:00';
         
         Test.startTest();
-        iniciarDescuentoMartes m = new iniciarDescuentoMartes();
+        detenerDescuentoMartes m = new detenerDescuentoMartes();
         String sch = '0 0 0 * * ? *';
         String jobID = system.schedule('Test Programado', sch, m);
         
@@ -58,11 +58,11 @@ public class agregarDescuentoMartesTest {
         
         system.assertEquals(conExpresion,String.valueOf(ct.NextFireTime));
         
-        agregarDescuentoMartes batchClass = new agregarDescuentoMartes(); 
+        quitarDescuentoMartes batchClass = new quitarDescuentoMartes(); 
         ID batchprocessid = Database.executeBatch(batchClass) ;
         Test.stopTest();
         
         PricebookEntry precio = [Select UnitPrice from PricebookEntry Where Pricebook2Id =: turista.Id Limit 1];
-        system.assertEquals(3250, precio.UnitPrice);
+        system.assertEquals(5000, precio.UnitPrice);
     }
 }
