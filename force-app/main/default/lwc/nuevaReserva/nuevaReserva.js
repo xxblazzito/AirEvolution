@@ -27,6 +27,10 @@ export default class NuevaReserva extends LightningElement {
     reservaNoExiste;
     openModal;
     
+    /**
+     * La función devuelve una matriz de objetos, cada objeto tiene una etiqueta y una propiedad de
+     * valor
+     */
     get options() {
         return [
             { label: 'Cedula de Ciudadania', value: 'Cedula de Ciudadania' },
@@ -47,8 +51,12 @@ export default class NuevaReserva extends LightningElement {
         this.openModal = false;
     }
 
+    /**
+     * Una función que se llama cuando el usuario cambia el valor de un campo.
+     */
     handleChange(event) {
         
+        /* Una declaración de cambio que se usa para determinar qué valor se está pasando. */
         switch(event.target.name){
             case 'tipoId':
                 this.value = event.detail.value;
@@ -66,6 +74,7 @@ export default class NuevaReserva extends LightningElement {
         }
     }
 
+    /* funciónes getter que devuelven los valores solicitados */
     get idcontact(){
         if(this.contactito != null){
             return this.contactito.Id;
@@ -81,6 +90,7 @@ export default class NuevaReserva extends LightningElement {
             return '';
         }
     }
+
     get numidcontact(){
         if(this.contactito != null){
             return this.contactito.Numero_de_Identificacion__c;
@@ -88,6 +98,7 @@ export default class NuevaReserva extends LightningElement {
             return '';
         }
     }
+
     get pasaportecontact(){
         if(this.contactito != null){
             return this.contactito.Numero_de_pasaporte__c;
@@ -130,6 +141,7 @@ export default class NuevaReserva extends LightningElement {
 
     buscarContacto(event){
         console.log(this.numeroIdent + this.value);
+        /* Llamando al método apex comprobarContacto y pasando los parámetros tipoId y numId. */
         comprobarContacto({tipoId: this.value, numId: this.numeroIdent})
             .then((result) => {
                 this.contactito= result.contacto;
@@ -166,6 +178,7 @@ export default class NuevaReserva extends LightningElement {
    
     createReserva(event){
         console.log('se va a crear la reserva');
+        /* Llamando al método apex createReserva y pasando los parámetros idContactito y listaPrecio. */
         crearteReserva({idContactito: String(this.contactito.Id),listaPrecio: this.precioSeleccionado})
                         .then((result) => {
                             console.log('resultado-->'+result);

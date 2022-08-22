@@ -105,7 +105,15 @@ public with sharing class contactoReserva {
                 tiquetes.add(nuevoTiquete);
             }
             insert tiquetes;
+
+            Opportunity reservita = [Select Id, StageName From Opportunity Where Id =: reserva];
+            if(reservita.StageName	== 'Pre-venta'){
+                reservita.StageName = 'Completado';
+                update reservita;
+            }
+
             return tiquetes;
+
         } catch (Exception e) {
             throw new personalizadaException('se ha producido un error asignando el pasajero: '+e);
         } 
