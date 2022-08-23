@@ -1,0 +1,21 @@
+<template>
+    <div style="width: 100%; height: 800px; background-color: gray ;" if:false={sesion}>
+        <div style="width: 400px ; height: 300px; background-color: white; position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin:auto">
+            <lightning-card title="Inicio de Sesion" style="height: 300px !important;">
+                <lightning-input type="text" placeholder="Usuario" name="nick" onchange={handleChange}></lightning-input>
+                <lightning-input type="password" placeholder="Contraseña" name="pass" onchange={handleChange}></lightning-input>
+                <br>
+                <lightning-button label="Iniciar" onclick={iniciar}></lightning-button>
+                <div slot="footer">
+                    <div style="width: 50%; float: left">
+                        <a href="#" onclick={restorePass}>Olvido su contraseña?</a>
+                    </div>
+                    <div style="width: 50%; float: right">
+                        <a href="#" onclick={createSesion}>Crear Cuenta</a>
+                    </div>
+                    <br>
+                </div>
+            </lightning-card>
+        </div>
+    </div>
+</template>
