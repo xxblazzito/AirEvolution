@@ -19,4 +19,19 @@ public with sharing class GestionSesion {
             return null;
         }
     }
+
+    @AuraEnabled
+    public static Sesion__c crearSesion(string nick, string pass, string pass2, string correo){
+        try {
+            if(pass == pass2){
+                Sesion__c newSesion = new Sesion__c(Name = nick, Correo_Electronico__c = correo , password__c = pass);
+                insert newSesion;
+                return newSesion;
+            }else{
+                return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }
