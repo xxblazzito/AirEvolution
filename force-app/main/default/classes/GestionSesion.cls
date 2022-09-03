@@ -34,4 +34,14 @@ public with sharing class GestionSesion {
             return null;
         }
     }
+
+    @AuraEnabled
+    public static Sesion__c enviarRecuperacion(string nick){
+        try {
+            Sesion__c sesion = [select Id, Name From Sesion__c where Name =: nick Limit 1];
+            return sesion;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
 }

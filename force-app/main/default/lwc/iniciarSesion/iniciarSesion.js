@@ -16,6 +16,7 @@ export default class IniciarSesion extends LightningElement {
     password2C;
     datosNuevaSesion;
     errorNuevaSesion;
+    isModalOpen;
 
     handleChange(event) {
         /* Una declaración de cambio que se usa para determinar qué input se está usando. */
@@ -83,6 +84,7 @@ export default class IniciarSesion extends LightningElement {
 
     restorePass(){
         console.log('Recuperando la contraseña');
+        this.isModalOpen = true;
     }
 
     createSesion(){
@@ -108,6 +110,11 @@ export default class IniciarSesion extends LightningElement {
             variant: 'error',
         });
         this.dispatchEvent(event);
+    }
+
+    closeModal() {
+        // to close modal set isModalOpen tarck value as false
+        this.isModalOpen = false;
     }
     
 }
