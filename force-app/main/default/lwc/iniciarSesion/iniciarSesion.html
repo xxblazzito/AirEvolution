@@ -3,8 +3,8 @@
         <div style="width: 400px ; height: 300px; background-color: white; position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin:auto">
             <div if:false={creandoSesion}>
                 <lightning-card title="Inicio de Sesion" style="height: 300px !important;">
-                    <lightning-input type="text" placeholder="Usuario" name="nick" onchange={handleChange} required></lightning-input>
-                    <lightning-input type="password" placeholder="Contraseña" name="pass" onchange={handleChange} required></lightning-input>
+                    <lightning-input type="text" placeholder="Usuario" name="nick" onchange={handleChange} label="Nombre de Usuario" required></lightning-input>
+                    <lightning-input type="password" placeholder="Contraseña" name="pass" onchange={handleChange} label="Contraseña" required></lightning-input>
                     <br>
                     <lightning-button label="Iniciar" onclick={iniciar}></lightning-button>
                     <div slot="footer">
@@ -20,10 +20,10 @@
             </div>
             <div if:true={creandoSesion}>
                 <lightning-card title="Crear usuario" style="height: 300px !important;">
-                    <lightning-input type="text" placeholder="Usuario" name="nickC" onchange={handleChange} required></lightning-input>
-                    <lightning-input type="email" placeholder="Correo Electronico" name="mailC" onchange={handleChange} required></lightning-input>
-                    <lightning-input type="password" placeholder="Contraseña" name="pass1C" onchange={handleChange} required></lightning-input>
-                    <lightning-input type="password" placeholder="Confirmar Contraseña" name="pass2C" onchange={handleChange} required></lightning-input>
+                    <lightning-input type="text" placeholder="Usuario" name="nickC" onchange={handleChange} label="Nombre de Usuario" required></lightning-input>
+                    <lightning-input type="email" placeholder="Correo Electronico" name="mailC" onchange={handleChange} label="Correo Electronico" required></lightning-input>
+                    <lightning-input type="password" placeholder="Contraseña" name="pass1C" onchange={handleChange} label="Contraseña" required></lightning-input>
+                    <lightning-input type="password" placeholder="Confirmar Contraseña" name="pass2C" onchange={handleChange} label="Confirmar Contraseña" required></lightning-input>
                     <br>
                     <lightning-button label="Crear" onclick={crear}></lightning-button>
                     <div slot="footer">
@@ -53,11 +53,39 @@
                             <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Recuperar Contraseña</h2>
                         </header>
                         <!-- Modal/Popup Box LWC body starts here -->
-                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-                            <p><b>Modals/Popup Box are used to display content in a layer above the app.
-                            </b></p>
-                            <p><b>This paradigm is used in cases such as the creation or editing of a record, as well as various types of messaging and wizards.
-                            </b></p>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="height: 500px;">
+                            <div if:false={restaurando}>
+                                <div>
+                                    <lightning-input type="text" placeholder="Usuario" name="nickR" onchange={handleChange} label="Usuario para Recuperar" required></lightning-input>
+                                </div>
+                                <div>
+                                    <lightning-button label="Solicitar Codigo de Verificación" onclick={solicitarCodigo}></lightning-button>
+                                </div>
+                            </div>
+                            <div if:true={restaurando}>
+                                <div if:false={validando}>
+                                    <p>Se ha enviado el codigo de verificacion a tu correo electronico</p>
+                                    <div if:false={codigoValidado}>
+                                        <div>
+                                            <lightning-input type="text" placeholder="Codigo de Verificacion" name="codigoR" onchange={handleChange} label="Codigo de Verificacion" required></lightning-input>
+                                        </div>
+                                        <div>
+                                            <lightning-button label="Validar Codigo de Verificación" onclick={validarCodigo}></lightning-button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div if:true={validando}>
+                                    <div>
+                                        <lightning-input type="password" placeholder="Nueva Contraseña" name="passR1" onchange={handleChange} label="Nueva Contraseña" required></lightning-input>
+                                    </div>
+                                    <div>
+                                        <lightning-input type="password" placeholder="Confirmar Contraseña" name="passR2" onchange={handleChange} label="Confirmar Nueva Contraseña" required></lightning-input>
+                                    </div>
+                                    <div>
+                                        <lightning-button label="Cambiar Contraseña" onclick={cambiarPass}></lightning-button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!-- Modal/Popup Box LWC footer starts here -->
                         <footer class="slds-modal__footer">
