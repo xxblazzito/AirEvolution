@@ -2,9 +2,10 @@ public with sharing class ObtenerClima {
     
     public static decimal getClima(string lat,string lon){
         decimal resultado;
+        string codigo = 'd238fe303865c859a34f75b34a4f2bed';
         Http http = new Http();
         HttpRequest request = new HttpRequest();
-        request.setEndpoint('https://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+lon+'&lang=es&appid=d238fe303865c859a34f75b34a4f2bed&units=metric');
+        request.setEndpoint('https://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+lon+'&lang=es&appid='+codigo+'&units=metric');
         request.setMethod('GET');
         HttpResponse response = http.send(request);
         if(response.getStatusCode() == 200) {
