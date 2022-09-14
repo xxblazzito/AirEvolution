@@ -2,7 +2,7 @@ public class BatchableReservaNoPagada implements Database.Batchable<sObject>{
     public Database.QueryLocator start(Database.BatchableContext BC){
     	DateTime modificacionPasado = DateTime.now().addHours(-4);
         Datetime modificacionPresente = Datetime.now();
-        return Database.getQueryLocator('SELECT Id, StageName, LastModifiedDate FROM Opportunity WHERE  (LastModifiedDate >=: modificacionPasado AND LastModifiedDate <=: modificacionPresente) AND StageName IN (\'Pre-venta\', \'Completado\')');
+        return Database.getQueryLocator('SELECT Id, StageName, LastModifiedDate FROM Opportunity WHERE  (LastModifiedDate >=: modificacionPasado AND LastModifiedDate <=: modificacionPresente) AND StageName NOT IN (\'Pagado\', \'No pagado\')');
     }
     
     public void execute(Database.BatchableContext BC, List<Opportunity> reservas){
@@ -14,7 +14,7 @@ public class BatchableReservaNoPagada implements Database.Batchable<sObject>{
             //Valido las horas que han transcurrido desde la ultima actualización de la reserva
             for (opportunity reserva : reservas) {
                     horaReserva = (reserva.LastModifiedDate).hour();
-                    if(horaActual - horaReserva >= 3){
+                    if(horaActual - horaReserva >= 3 && (reserva.StageName != 'Pagado' || reserva.StageName != 'No pagado') ){
                         reserva.StageName = 'No pagado';
                         idReservas.add(reserva.Id);
                     }
@@ -22,8 +22,7 @@ public class BatchableReservaNoPagada implements Database.Batchable<sObject>{
             }
             update reservas;
             //Busco los tiquetes que tiene la reserva para eliminarlos
-            List<OpportunityLineItem> eliminar = [SELECT Id From OpportunityLineItem 
-            WHERE OpportunityId =: idReservas];
+            List<OpportunityLineItem> eliminar = [SELECT Id From OpportunityLineItem WHERE OpportunityId =: idReservas];
             delete eliminar;
 
         } catch (Exception e) {

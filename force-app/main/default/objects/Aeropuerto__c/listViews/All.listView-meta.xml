@@ -5,6 +5,8 @@
     <columns>NAME</columns>
     <columns>Pais__c</columns>
     <columns>Ciudad__c</columns>
+    <columns>Ubicacion__Latitude__s</columns>
+    <columns>Ubicacion__Longitude__s</columns>
     <filterScope>Everything</filterScope>
     <label>Todos</label>
 </ListView>

@@ -1,0 +1,70 @@
+<apex:page standardController="Opportunity" extensions="TiquetesDeReserva" renderAs="PDF">
+    <div style=" float: right; margin-top: 0 px">
+        <apex:image url="{!$Resource.Logo}" width="100" height="50" /> 
+    </div>
+    <apex:form >
+        <apex:pageBlock title="Informacion de la Reserva" >
+            <p>
+                <b>Nombre de la Reserva: </b>{!Opportunity.Name}
+            </p>
+            <p>
+                <b>Titular de la Reserva: </b>{!Opportunity.Titular_de_la_reserva__r.Name }
+            </p>
+            <p>
+                <b>Tipo de Reserva: </b> {!Opportunity.Pricebook2.Name}
+            </p>
+            <p>
+                <b>Valor Total: </b> {!opportunity.Valor_Total__c }
+            </p>
+        </apex:pageBlock>
+        <apex:pageBlock title="Vuelos de la Reserva">
+            <apex:pageBlockTable value="{!vueloInfo}" var="vlo" align="center" width="100%" border="1" >
+                <apex:column headerValue="Vuelo Nro" value="{!vlo.Name}"/>
+                <apex:column headerValue="Hora de Salida" >{!vlo.Aeropuerto_de_partida__r.Name}<br></br>{!vlo.Fecha_y_hora_de_partida__c}</apex:column>
+            <apex:column headerValue="Hora de Llegada" >{!vlo.Aeropuerto_de_llegada__r.Name}<br></br>{!vlo.Fecha_y_hora_estimada_de_llegada__c}</apex:column>
+        <apex:column headerValue="Duracion">{! ROUND((vlo.Fecha_y_hora_estimada_de_llegada__c - vlo.Fecha_y_hora_de_partida__c)*24,2)}</apex:column>
+    </apex:pageBlockTable>
+</apex:pageBlock>
+<apex:pageBlock title="Informacion de los Tiquetes">
+    <apex:pageBlockTable value="{!lineItems}" var="oli" align="center" border="1" width="100%">
+        <apex:column headerValue="Pasajero" value="{!oli.Pasajero__r.Name}"/>
+        <apex:column value="{!oli.Equipaje_Permitido__c}"/>
+        <apex:column value="{!oli.Asiento__c}"/>
+        <apex:column headerValue="Valor" value="COP {!oli.UnitPrice}"/>
+    </apex:pageBlockTable>    
+</apex:pageBlock>
+<apex:pageBlock title="Terminos y Condiciones">
+    <apex:pageBlockSection title="3.1. Uso y Manejo de las Reserva.">
+        <p>
+            Con el fin de generar una Reserva, emitir el Tiquete y prestar el servicio de transporte aéreo, el Pasajero deberá suministrar a EL TRANSPORTADOR o su intermediario, información completa, precisa y veraz sobre sus datos personales. Tales datos incluirán al menos, nombre(s) y apellidos, documento de identidad, dirección postal y electrónica (si aplica), domicilio y teléfono de contacto, así como los datos de un contacto de emergencia. Para tal efecto, el Pasajero, o el tercero que actúa en su nombre, declara a EL TRANSPORTADOR contar con las autorizaciones de los titulares para el tratamiento de los datos proporcionados.
+            
+            EL TRANSPORTADOR realizará el tratamiento de la información y datos personales del Pasajero conforme a su “Política de Privacidad de Clientes, Viajeros Y Usuarios” disponible para consulta en www.avianca.com.
+            
+            La Reserva es personal e intransferible. La divulgación de la Reserva o la información de ésta por parte de su titular a terceros será responsabilidad exclusiva de este.
+            
+            El TRANSPORTADOR podrá denegar la venta de servicios a través de canales sin contacto, cuando compruebe que la persona tiene una deuda por no pago de compras anteriores, hasta que se salde la deuda. En cualquier caso, se permitirá a la persona realizar la compra en una oficina, donde se podrá comprobar el pago efectivo del Boleto.
+            
+            El TRANSPORTADOR de servicios de transporte aéreo está obligado a informar a los pasajeros sobre la identidad de la o las compañías aéreas operadoras.
+        </p>
+    </apex:pageBlockSection>
+    <apex:pageBlockSection title="3.2. Cancelación de Reserva.">
+        <p>
+            Una Reserva podrá ser cancelada por las siguientes razones:
+            
+            a. Por el titular de la Reserva o quien actúe a su nombre solicitando la cancelación de la misma, cuando la persona provea la información confidencial correspondiente a la Reserva.
+            
+            b. Por EL TRANSPORTADOR, cuando exista más de una Reserva para la misma persona en el mismo número de vuelo y fecha o cuando existan segmentos duplicados dentro de la misma Reserva; cuando venza el tiempo límite de compra del Boleto, sin que este haya sido adquirido, cuando dicha cancelación sea necesaria para cumplir con una regulación o solicitud gubernamental, en posibles casos de compras fraudulentas, incluyendo pero sin limitarse a pagos fraudulentos, o cuando el Pasajero no cumpla con las condiciones de la Tarifa y/o del Contrato y/o disposiciones legales. En el caso de actos fraudulentos, EL TRANSPORTADOR se reserva el derecho de cancelar cualquier Reserva, incluyendo servicios adicionales, y reportar la persona a las Autoridades.
+        </p>
+    </apex:pageBlockSection>
+    <apex:pageBlockSection title="3.3. Modificación de la Reserva.">
+        <p>
+            Una Reserva podrá ser modificada por las siguientes razones:
+            
+            a. Por el titular de la Reserva o quien actúe a su nombre solicitando la modificación de la misma siempre y cuando la persona provea la información confidencial correspondiente a la Reserva. El cambio podrá generar algún costo o penalidad, de acuerdo con las condiciones de la Tarifa. Las condiciones de la Tarifa están disponibles en www.avianca.com y son informadas al Pasajero al momento de la compra.
+            
+            b. Por EL TRANSPORTADOR cuando dicha modificación sea necesaria para cumplir con una regulación o solicitud gubernamental, por razones de fuerza mayor, caso fortuito o amenaza de estas, o por razones operacionales. En caso que la modificación cambie la fecha, el itinerario del vuelo, la ruta o el operador del vuelo EL TRANSPORTADOR de ser posible informará al Pasajero oportunamente, de acuerdo con las normas que existan sobre el particular, si aplican.
+        </p>
+    </apex:pageBlockSection>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

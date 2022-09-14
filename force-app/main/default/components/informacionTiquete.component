@@ -1,0 +1,5 @@
+<apex:component >
+    <h1>
+        Componente de Tiquetes!
+    </h1>
+</apex:component>

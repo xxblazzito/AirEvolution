@@ -4,9 +4,9 @@
     <description>Temperatura atmosferica al momento de realizar la consulta</description>
     <externalId>false</externalId>
     <label>Temperatura</label>
-    <precision>3</precision>
+    <precision>5</precision>
     <required>false</required>
-    <scale>0</scale>
+    <scale>2</scale>
     <trackTrending>false</trackTrending>
     <type>Number</type>
     <unique>false</unique>

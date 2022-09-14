@@ -20,7 +20,7 @@ public with sharing class ReservaTriggerHandler implements triggerHandler {
         
     }
     public void afterUpdate(List<Opportunity> oldAccounts,List<Opportunity> newAccounts,Map<ID,SObject> oldAccountMap, Map<ID,SObject> newAccountMap){
-        ReservaPagada(newAccounts);
+        //ReservaPagada(newAccounts);
     }
     public void afterDelete(List<Opportunity> oldAccounts,Map<ID,SObject> oldAccountMap){
         // code here
@@ -53,7 +53,7 @@ public with sharing class ReservaTriggerHandler implements triggerHandler {
         }
     }
     
-    public static void ReservaPagada(List<Opportunity> oportunidades){
+    /*public static void ReservaPagada(List<Opportunity> oportunidades){
         List<String> idContactos= new list<String>();
         for(Opportunity reserva: oportunidades){
             if(reserva.StageName == 'Pagado'){
@@ -68,5 +68,5 @@ public with sharing class ReservaTriggerHandler implements triggerHandler {
            mail.setTemplateId(et.id);
            Messaging.sendEmail(new Messaging.MassEmailMessage[] { mail }); 
         }
- 	}
+ 	}*/
 }

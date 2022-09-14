@@ -33,7 +33,7 @@ public class contactoReservaTest {
         
         list<Aeropuerto__c> aeropuertos = new List<Aeropuerto__c>();
         for(integer i = 0 ; i < 2; i++){
-            Aeropuerto__c aeropuerto = new Aeropuerto__c(Name='aeropuerto'+i , Pais__c = 'Colombia', Ciudad__c = 'Antioquia');
+            Aeropuerto__c aeropuerto = new Aeropuerto__c(Name='aeropuerto'+i , Pais__c = 'Colombia', Ciudad__c = 'Antioquia',Ubicacion__Latitude__s = 38.953326,Ubicacion__Longitude__s = -1.862513);
             aeropuertos.add(aeropuerto);
         }
         insert aeropuertos;
@@ -42,9 +42,6 @@ public class contactoReservaTest {
                                       Fecha_y_hora_de_partida__c = Date.newInstance(2022, 08, 22),Avion__c = avion.Id,
                                       Fecha_y_hora_estimada_de_llegada__c = Date.newInstance(2022, 08, 23));
         insert vuelo;
-        
-        
-        
         
         PricebookEntry entrada = new PricebookEntry(Pricebook2Id = pricebookId,UnitPrice=5000,Product2Id=vuelo.Id,IsActive = true);
         insert entrada;
