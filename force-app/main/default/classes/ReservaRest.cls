@@ -87,7 +87,7 @@ global with sharing class ReservaRest {
     }
     
     @HttpPatch
-    global static pagoWrapper pagarReserva(string idReserva, decimal Amount){
+    global static pagoWrapper pagarReserva(string idReserva, boolean aprobado){
         String mensaje;
         Boolean exito;
         pagoWrapper wrapper;
@@ -98,8 +98,8 @@ global with sharing class ReservaRest {
             wrapper = new pagoWrapper(actualizaReserva, mensaje, exito);
             return wrapper;
         }
-        if(Amount == null){
-            mensaje = 'Debe de ingresar la cantidad de dinero';
+        if(aprobado == null){
+            mensaje = 'No se ha podido validar el pago con entidad Bancaria';
             exito = false;
             wrapper = new pagoWrapper(actualizaReserva, mensaje, exito);
             return wrapper;
@@ -107,13 +107,13 @@ global with sharing class ReservaRest {
         try{
             opportunity reserva = [select id,Name,Valor_Total__c, StageName, Titular_de_la_reserva__r.Name, Titular_de_la_reserva__r.Email from opportunity where Id =: idReserva limit 1];
             
-            if (Amount >= reserva.Valor_Total__c){
+            if (aprobado == true){
                 actualizaReserva.Id = reserva.Id;
                 actualizaReserva.StageName = 'Pagado';
                 mensaje = 'La reserva se ha pagado Correctamente';
                 exito = true;
             }else{
-                mensaje = 'fondos insuficientes para realizar el Pago';
+                mensaje = 'Su pago ha sido Rechazado, por favor comuniquese con su entidad bancaria.';
                 exito = false;
                 opportunity reservaMala = null;
                 wrapper = new pagoWrapper(reservaMala,mensaje,exito);

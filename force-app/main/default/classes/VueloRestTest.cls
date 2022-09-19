@@ -64,12 +64,13 @@ public class VueloRestTest {
                     insert nuevoTiquete;
     }
     
+   
     @isTest
     private static void reservaPostNuevoContacto(){
         Pricebook2 listaTurista = [select id from Pricebook2 where Name = 'Turista' Limit 1];
         PricebookEntry precioTurista = [select id from PricebookEntry where Pricebook2Id =: listaTurista.Id Limit 1];
         String idPrecio = precioTurista.Id;
-        VueloRest.ReservaWrapper resultadoReserva = VueloRest.createReserva(idPrecio, 'Cristian Blazz', 'Aguirre Prueba', 'Cedula de Ciudadania', '10409905', 'blazzito@gmail.com');
+        ReservaRest.ReservaWrapper resultadoReserva = ReservaRest.createReserva(idPrecio, 'Cristian Blazz', 'Aguirre Prueba', 'Cedula de Ciudadania', '10409905', 'blazzito@gmail.com');
         system.assertEquals(true, resultadoReserva.exito);
         system.assert(resultadoReserva.mensaje.contains('La reserva y el vuelo fueron Creados correctamente'));
         system.assert(resultadoReserva.reserva != null);
@@ -81,7 +82,7 @@ public class VueloRestTest {
         Pricebook2 listaTurista = [select id from Pricebook2 where Name = 'Turista' Limit 1];
         PricebookEntry precioTurista = [select id from PricebookEntry where Pricebook2Id =: listaTurista.Id Limit 1];
         String idPrecio = precioTurista.Id;
-        VueloRest.ReservaWrapper resultadoReserva = VueloRest.createReserva(idPrecio, 'Pablito', 'Josefino', 'Cedula de Ciudadania', '99050903482', 'blazzito@gmail.com');
+        ReservaRest.ReservaWrapper resultadoReserva = ReservaRest.createReserva(idPrecio, 'Pablito', 'Josefino', 'Cedula de Ciudadania', '99050903482', 'blazzito@gmail.com');
         system.assertEquals(true, resultadoReserva.exito);
         system.assert(resultadoReserva.mensaje.contains('La reserva y el vuelo fueron Creados correctamente'));
         system.assert(resultadoReserva.reserva != null);
@@ -93,7 +94,7 @@ public class VueloRestTest {
         Pricebook2 listaTurista = [select id from Pricebook2 where Name = 'Turista' Limit 1];
         PricebookEntry precioTurista = [select id from PricebookEntry where Pricebook2Id =: listaTurista.Id Limit 1];
         String idPrecio = precioTurista.Id;
-        VueloRest.ReservaWrapper resultadoReserva = VueloRest.createReserva(idPrecio, 'Cristian', 'Aguirre', 'Cedula de Ciudadania', '1040758632', 'blazzito@gmail.com');
+        ReservaRest.ReservaWrapper resultadoReserva = ReservaRest.createReserva(idPrecio, 'Cristian', 'Aguirre', 'Cedula de Ciudadania', '1040758632', 'blazzito@gmail.com');
         system.assertEquals(false, resultadoReserva.exito);
         system.assert(resultadoReserva.mensaje.contains('El pasajero ya tiene asignada una reserva con dicho vuelo, no es posible asignarlo nuevamente'));
     }
@@ -124,7 +125,7 @@ public class VueloRestTest {
         Opportunity reservaContacto = new Opportunity (Titular_de_la_reserva__c= contacto.Id,Name = 'a',CloseDate = Date.today().addDays(1),StageName = 'Pre-venta',
                                                        Pricebook2Id = listaTurista.Id );
         insert reservaContacto;
-        VueloRest.ReservaWrapper resultadoReserva = VueloRest.createReserva(idPrecio, 'Pablito', 'Josefino', 'Cedula de Ciudadania', '1040758632', 'blazzito@gmail.com');
+        ReservaRest.ReservaWrapper resultadoReserva = ReservaRest.createReserva(idPrecio, 'Pablito', 'Josefino', 'Cedula de Ciudadania', '1040758632', 'blazzito@gmail.com');
         system.assertEquals(true, resultadoReserva.exito);
         system.assert(resultadoReserva.mensaje.contains('La reserva se actualizo y se agrego el vuelo correctamente'));
         system.assert(resultadoReserva.reserva != null);
@@ -133,7 +134,7 @@ public class VueloRestTest {
     
     @isTest
     private static void reservaFaltaPriceBookEntry(){
-        VueloRest.ReservaWrapper resultadoReserva = VueloRest.createReserva(null, 'Cristian Blazz', 'Aguirre Prueba', 'Cedula de Ciudadania', '10409905', 'blazzito@gmail.com');
+        ReservaRest.ReservaWrapper resultadoReserva = ReservaRest.createReserva(null, 'Cristian Blazz', 'Aguirre Prueba', 'Cedula de Ciudadania', '10409905', 'blazzito@gmail.com');
         system.assertEquals(false, resultadoReserva.exito);
         system.assert(resultadoReserva.mensaje.contains('Falta el ID de la Entrada de Lista de Precios'));
         system.assert(resultadoReserva.reserva != null);
@@ -145,7 +146,7 @@ public class VueloRestTest {
         Pricebook2 listaTurista = [select id from Pricebook2 where Name = 'Turista' Limit 1];
         PricebookEntry precioTurista = [select id from PricebookEntry where Pricebook2Id =: listaTurista.Id Limit 1];
         String idPrecio = precioTurista.Id;
-        VueloRest.ReservaWrapper resultadoReserva = VueloRest.createReserva(idPrecio, null, 'Aguirre Prueba', 'Cedula de Ciudadania', '10409905', 'blazzito@gmail.com');
+        ReservaRest.ReservaWrapper resultadoReserva = ReservaRest.createReserva(idPrecio, null, 'Aguirre Prueba', 'Cedula de Ciudadania', '10409905', 'blazzito@gmail.com');
         system.assertEquals(false, resultadoReserva.exito);
         system.assert(resultadoReserva.mensaje.contains('Debe Ingresar el Nombre Completo del Contacto'));
         system.assert(resultadoReserva.reserva != null);
@@ -157,7 +158,7 @@ public class VueloRestTest {
         Pricebook2 listaTurista = [select id from Pricebook2 where Name = 'Turista' Limit 1];
         PricebookEntry precioTurista = [select id from PricebookEntry where Pricebook2Id =: listaTurista.Id Limit 1];
         String idPrecio = precioTurista.Id;
-        VueloRest.ReservaWrapper resultadoReserva = VueloRest.createReserva(idPrecio, 'Cristian Blazz', 'Aguirre Prueba', null, '10409905', 'blazzito@gmail.com');
+        ReservaRest.ReservaWrapper resultadoReserva = ReservaRest.createReserva(idPrecio, 'Cristian Blazz', 'Aguirre Prueba', null, '10409905', 'blazzito@gmail.com');
         system.assertEquals(false, resultadoReserva.exito);
         system.assert(resultadoReserva.mensaje.contains('Debe Ingresar el Tipo de Documento'));
         system.assert(resultadoReserva.reserva != null);
@@ -169,7 +170,7 @@ public class VueloRestTest {
         Pricebook2 listaTurista = [select id from Pricebook2 where Name = 'Turista' Limit 1];
         PricebookEntry precioTurista = [select id from PricebookEntry where Pricebook2Id =: listaTurista.Id Limit 1];
         String idPrecio = precioTurista.Id;
-        VueloRest.ReservaWrapper resultadoReserva = VueloRest.createReserva(idPrecio, 'Cristian Blazz', 'Aguirre Prueba', 'Cedula de Ciudadania', null, 'blazzito@gmail.com');
+        ReservaRest.ReservaWrapper resultadoReserva = ReservaRest.createReserva(idPrecio, 'Cristian Blazz', 'Aguirre Prueba', 'Cedula de Ciudadania', null, 'blazzito@gmail.com');
         system.assertEquals(false, resultadoReserva.exito);
         system.assert(resultadoReserva.mensaje.contains('Debe Ingresar el Numero de Documento'));
         system.assert(resultadoReserva.reserva != null);
@@ -178,7 +179,7 @@ public class VueloRestTest {
     
     @isTest
     private static void reservaErrorInesperado(){
-        VueloRest.ReservaWrapper resultadoReserva = VueloRest.createReserva('aas54654as', 'Cristian Blazz', 'Aguirre Prueba', 'Cedula de Ciudadania', '10409905', 'blazzito@gmail.com');
+        ReservaRest.ReservaWrapper resultadoReserva = ReservaRest.createReserva('aas54654as', 'Cristian Blazz', 'Aguirre Prueba', 'Cedula de Ciudadania', '10409905', 'blazzito@gmail.com');
         system.assertEquals(false, resultadoReserva.exito);
         system.assert(resultadoReserva.mensaje.contains('Se ha producido un error inesperado'));
         system.assert(resultadoReserva.reserva != null);
@@ -334,9 +335,9 @@ public class VueloRestTest {
         request.requestURI = 'https://yourInstance.my.salesforce.com/services/apexrest/Product2/';
         request.httpMethod = 'patch';
         request.addHeader('Content-Type', 'application/json');
-        request.requestBody = blob.valueOf('{"idReserva: "'+reserva.Id+'","Amount" : 6000000}');
+        request.requestBody = blob.valueOf('{"idReserva: "'+reserva.Id+'","aprobado" : true}');
         RestContext.request = request;
-        VueloRest.pagoWrapper respuesta = vueloRest.pagarReserva(reserva.Id, 6000000);
+        ReservaRest.pagoWrapper respuesta = ReservaRest.pagarReserva(reserva.Id, true);
         system.debug(respuesta);
         system.assertEquals('La reserva se ha pagado Correctamente', respuesta.mensaje);
     }
@@ -348,25 +349,25 @@ public class VueloRestTest {
         request.requestURI = 'https://yourInstance.my.salesforce.com/services/apexrest/Product2/';
         request.httpMethod = 'patch';
         request.addHeader('Content-Type', 'application/json');
-        request.requestBody = blob.valueOf('{"idReserva: "'+reserva.Id+'","Amount" : 6000000}');
+        request.requestBody = blob.valueOf('{"idReserva: "'+reserva.Id+'","aprobado" : true}');
         RestContext.request = request;
-        VueloRest.pagoWrapper respuesta = vueloRest.pagarReserva(reserva.Id, 6000000);
+        ReservaRest.pagoWrapper respuesta = ReservaRest.pagarReserva(reserva.Id, true);
         system.debug(respuesta);
         system.assertEquals('Debe de ingresar el id de la Reserva', respuesta.mensaje);
     }
     
     @isTest
-    private static void vueloPdfSinAmount(){
+    private static void vueloPdfSinAprobar(){
         Opportunity reserva = [select id from Opportunity limit 1];
         RestRequest request = new RestRequest();
         request.requestURI = 'https://yourInstance.my.salesforce.com/services/apexrest/Product2/';
         request.httpMethod = 'patch';
         request.addHeader('Content-Type', 'application/json');
-        request.requestBody = blob.valueOf('{"idReserva: "'+reserva.Id+'","Amount" : null}');
+        request.requestBody = blob.valueOf('{"idReserva: "'+reserva.Id+'","aprobado" : null}');
         RestContext.request = request;
-        VueloRest.pagoWrapper respuesta = vueloRest.pagarReserva(reserva.Id, null);
+        ReservaRest.pagoWrapper respuesta = ReservaRest.pagarReserva(reserva.Id, null);
         system.debug(respuesta);
-        system.assertEquals('Debe de ingresar la cantidad de dinero', respuesta.mensaje);
+        system.assertEquals('No se ha podido validar el pago con entidad Bancaria', respuesta.mensaje);
     }
     
     @isTest
@@ -376,11 +377,11 @@ public class VueloRestTest {
         request.requestURI = 'https://yourInstance.my.salesforce.com/services/apexrest/Product2/';
         request.httpMethod = 'patch';
         request.addHeader('Content-Type', 'application/json');
-        request.requestBody = blob.valueOf('{"idReserva: "'+reserva.Id+'","Amount" : 1}');
+        request.requestBody = blob.valueOf('{"idReserva: "'+reserva.Id+'","aprobado" : false}');
         RestContext.request = request;
-        VueloRest.pagoWrapper respuesta = vueloRest.pagarReserva(reserva.Id, 1);
+        ReservaRest.pagoWrapper respuesta = ReservaRest.pagarReserva(reserva.Id, false);
         system.debug(respuesta);
-        system.assertEquals('fondos insuficientes para realizar el Pago', respuesta.mensaje);
+        system.assertEquals('Su pago ha sido Rechazado, por favor comuniquese con su entidad bancaria.', respuesta.mensaje);
     }
     
     @isTest
@@ -398,9 +399,9 @@ public class VueloRestTest {
         request.requestURI = 'https://yourInstance.my.salesforce.com/services/apexrest/Product2/';
         request.httpMethod = 'patch';
         request.addHeader('Content-Type', 'application/json');
-        request.requestBody = blob.valueOf('{"idReserva: "'+reservaContacto.Id+'","Amount" : 6000000}');
+        request.requestBody = blob.valueOf('{"idReserva: "'+reservaContacto.Id+'","aprobado" : true}');
         RestContext.request = request;
-        VueloRest.pagoWrapper respuesta = vueloRest.pagarReserva(reservaContacto.Id, 6000000);
+        ReservaRest.pagoWrapper respuesta = ReservaRest.pagarReserva(reservaContacto.Id, true);
         system.debug(respuesta);
         system.assert(respuesta.mensaje.contains('Error al actualizar la reserva y/o enviar el correo electronico'));
     }

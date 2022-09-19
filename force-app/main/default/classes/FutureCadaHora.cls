@@ -7,11 +7,10 @@ public with sharing class FutureCadaHora {
             Aeropuerto_de_Partida__r.Ubicacion__Longitude__s,Aeropuerto_de_Partida__r.Ubicacion__Latitude__s, Aeropuerto_de_llegada__r.Id,
             Aeropuerto_de_llegada__r.Ubicacion__Longitude__s,Aeropuerto_de_llegada__r.Ubicacion__Latitude__s from product2 where IsActive = true]; 
     
-            List<Product2> vuelosEnVuelo = Vuelo.cambiarEstadoDeVuelo(vuelos);
             List<Clima__c> climasVuelos = Clima.crearClimaLlegada(vuelos);
-    
-    
             insert climasVuelos;
+            
+            List<Product2> vuelosEnVuelo = Vuelo.cambiarEstadoDeVuelo(vuelos);
             update vuelosEnVuelo;
         }catch(exception e){
             throw new MyException(e);

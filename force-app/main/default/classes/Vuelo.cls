@@ -6,14 +6,14 @@ public with sharing class Vuelo {
         Datetime modificacion = Datetime.now();
         try{
             for(product2 vuelo: vuelos){
-                if(vuelo.Fecha_y_hora_estimada_de_llegada__c <= modificacion && (vuelo.Estado__c == 'En Venta' || vuelo.Estado__c == 'Check In' || vuelo.Estado__c == 'En Vuelo')){
+                if(vuelo.Fecha_y_hora_estimada_de_llegada__c <= modificacion && vuelo.Fecha_y_hora_de_partida__c <= modificacion && (vuelo.Estado__c == 'En Venta' || vuelo.Estado__c == 'Check In' || vuelo.Estado__c == 'En Vuelo')){
                     product2 vueloActualizado = new product2();
                     vueloActualizado.Id = vuelo.Id;
                     vueloActualizado.Estado__c = 'Terminado';
                     vueloActualizado.IsActive = false;
                     listaVuelos.add(vueloActualizado);
                 }
-                if(vuelo.Fecha_y_hora_de_partida__c <= modificacion && (vuelo.Estado__c == 'En Venta' || vuelo.Estado__c == 'Check In')){
+                if(vuelo.Fecha_y_hora_de_partida__c <= modificacion && vuelo.Fecha_y_hora_estimada_de_llegada__c >= modificacion && (vuelo.Estado__c == 'En Venta' || vuelo.Estado__c == 'Check In')){
                     product2 vueloActualizado = new product2();
                     vueloActualizado.Id = vuelo.Id;
                     vueloActualizado.Estado__c = 'En Vuelo';
@@ -39,7 +39,7 @@ public with sharing class Vuelo {
                 
                 if(hours <= 24){
                     Product2 vueloActualizado = new Product2();
-                    vueloActualizado.Id = vuelo.Id;
+                    vueloActualizado = vuelo;
                     vueloActualizado.Estado__c = 'Check In';
                     vuelosActualizables.add(vueloActualizado);
                 }
@@ -48,6 +48,7 @@ public with sharing class Vuelo {
             List<Clima__c> climasVuelos =Clima.crearClimaPartida(vuelosActualizables);
     
             insert climasVuelos;
+            
             update vuelosActualizables;
     
             EntradaListaPrecios.aplicarDescuentoCincuenta(vuelosActualizables);
