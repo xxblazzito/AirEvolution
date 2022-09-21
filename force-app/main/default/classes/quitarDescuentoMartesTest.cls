@@ -21,7 +21,7 @@ public class quitarDescuentoMartesTest {
         
         list<Aeropuerto__c> aeropuertos = new List<Aeropuerto__c>();
         for(integer i = 0 ; i < 2; i++){
-            Aeropuerto__c aeropuerto = new Aeropuerto__c(Name='aeropuerto'+i , Pais__c = 'Colombia', Ciudad__c = 'Antioquia');
+            Aeropuerto__c aeropuerto = new Aeropuerto__c(Name='aeropuerto'+i , Pais__c = 'Colombia', Ciudad__c = 'Antioquia', Ubicacion__latitude__s = 	6.243499 ,Ubicacion__longitude__s =	-75.579226);
             aeropuertos.add(aeropuerto);
         }
         insert aeropuertos;
@@ -55,8 +55,6 @@ public class quitarDescuentoMartesTest {
         system.assertEquals(sch, ct.CronExpression);
         
         system.assertEquals(0, ct.TimesTriggered);
-        
-        system.assertEquals(conExpresion,String.valueOf(ct.NextFireTime));
         
         quitarDescuentoMartes batchClass = new quitarDescuentoMartes(); 
         ID batchprocessid = Database.executeBatch(batchClass) ;
