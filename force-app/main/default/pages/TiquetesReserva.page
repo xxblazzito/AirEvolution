@@ -1,4 +1,4 @@
-<apex:page standardController="Opportunity" extensions="TiquetesDeReserva" renderAs="PDF">
+<apex:page standardController="Opportunity" extensions="TiquetesDeReserva" renderAs="Pdf">
     <div style=" float: right; margin-top: 0 px">
         <apex:image url="{!$Resource.Logo}" width="100" height="50" /> 
     </div>
