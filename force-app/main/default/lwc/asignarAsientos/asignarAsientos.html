@@ -1,0 +1,23 @@
+<template>
+    <lightning-card title="Seleccionar Asiento" if:false={asignado} >
+        <div style="height: 500px; border-style: solid; border-color: rgb(106, 143, 230); " >
+            <lightning-datatable
+            key-field="id"
+            data={data}                
+            columns={columns}
+            hide-checkbox-column
+            onrowaction={Asignacion}>
+            </lightning-datatable>
+        </div>
+    </lightning-card>
+    <div class="slds-p-around_medium lgc-bg" style="background-color: white;" if:true={asignado}>
+        <lightning-card title="Asiento Asignado" style="margin: 10px ;">
+            <lightning-tile label={nombreAsiento} type="media">
+                <lightning-avatar slot="media" src="https://www.lightningdesignsystem.com/assets/images/avatar1.jpg" fallback-icon-name="standard:person_account" ></lightning-avatar>
+                <ul class="slds-list_horizontal slds-has-dividers_right">
+                    <li class="slds-item">{tipoAsiento}</li>
+                </ul>
+            </lightning-tile>
+        </lightning-card>
+    </div>
+</template>
